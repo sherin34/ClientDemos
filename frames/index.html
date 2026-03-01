@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectacles Merchant Frames Centre | Premium Eyewear Thrissur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1e293b',
+                        accent: '#d97706',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(30, 41, 59, 0.4) 100%);
+        }
+        .frame-card:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2">
+                    <div class="bg-primary p-2 rounded-lg">
+                        <i data-lucide="glasses" class="text-white w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-tight text-primary block leading-none">SPECTACLES</span>
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-accent font-semibold">Merchant Frames Centre</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 font-medium text-sm text-slate-600">
+                    <a href="#home" class="hover:text-accent transition-colors">Home</a>
+                    <a href="#about" class="hover:text-accent transition-colors">About</a>
+                    <a href="#services" class="hover:text-accent transition-colors">Services</a>
+                    <a href="#gallery" class="hover:text-accent transition-colors">Showcase</a>
+                    <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+                </div>
+
+                <div class="hidden md:block">
+                    <a href="https://wa.me/919847865050?text=can%20I%20know%20more%20details" class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl">
+                        Book Eye Test
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-slate-600">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-4">
+            <a href="#home" class="block text-slate-600 font-medium">Home</a>
+            <a href="#about" class="block text-slate-600 font-medium">About</a>
+            <a href="#services" class="block text-slate-600 font-medium">Services</a>
+            <a href="#gallery" class="block text-slate-600 font-medium">Showcase</a>
+            <a href="#contact" class="block text-slate-600 font-medium">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&q=80&w=2000" alt="Eyewear background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="max-w-2xl text-white">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-accent/20 border border-accent/30 text-accent font-semibold text-sm mb-6 animate-pulse">
+                    Premium Eyewear Boutique
+                </span>
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+                    Discover Trendy <span class="text-accent underline decoration-4 underline-offset-8">Eyewear</span> for Every Face.
+                </h1>
+                <p class="text-lg text-slate-200 mb-10 leading-relaxed">
+                    Elevate your vision and style with our curated collection of premium frames and expert eye care services in the heart of Thrissur.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#gallery" class="bg-accent hover:bg-amber-600 text-white px-8 py-4 rounded-xl font-bold text-center transition-all transform hover:-translate-y-1 shadow-lg">
+                        Explore Collection
+                    </a>
+                    <a href="#services" class="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-center transition-all">
+                        Our Services
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
+            <i data-lucide="chevron-down" class="text-white/50 w-8 h-8"></i>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="bg-white py-12 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-3xl font-bold text-primary mb-1">500+</div>
+                    <div class="text-slate-500 text-sm font-medium uppercase tracking-wider">Unique Frames</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-primary mb-1">15k+</div>
+                    <div class="text-slate-500 text-sm font-medium uppercase tracking-wider">Happy Clients</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-primary mb-1">15+</div>
+                    <div class="text-slate-500 text-sm font-medium uppercase tracking-wider">Years Exp</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-primary mb-1">100%</div>
+                    <div class="text-slate-500 text-sm font-medium uppercase tracking-wider">Vision Care</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1511732351157-1865ef599cce?auto=format&fit=crop&q=80&w=800" alt="About our store" class="rounded-2xl shadow-2xl">
+                        <div class="absolute -bottom-6 -right-6 bg-accent p-8 rounded-2xl shadow-xl hidden lg:block">
+                            <i data-lucide="award" class="text-white w-12 h-12 mb-2"></i>
+                            <p class="text-white font-bold">Trusted in Thrissur</p>
+                            <p class="text-white/80 text-xs">Premium Quality Since Day 1</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <h2 class="text-sm font-bold text-accent uppercase tracking-widest mb-4">Our Story</h2>
+                    <h3 class="text-4xl font-bold text-primary mb-6 leading-tight">Your Vision, Our Professional Passion</h3>
+                    <p class="text-slate-600 mb-6 text-lg leading-relaxed">
+                        Located in the historic Erinjery Angadi of Thrissur, Spectacles Merchant Frames Centre has been the cornerstone of quality eyewear for years. We believe that glasses are more than just vision correction; they are a reflection of your personality.
+                    </p>
+                    <p class="text-slate-600 mb-8 text-lg leading-relaxed">
+                        Our expert optometrists and style consultants work hand-in-hand to ensure you leave with perfect clarity and a look that turns heads.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-slate-100 p-2 rounded-full">
+                                <i data-lucide="check" class="text-accent w-5 h-5"></i>
+                            </div>
+                            <span class="font-medium text-slate-700">Expert Eye Testing</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="bg-slate-100 p-2 rounded-full">
+                                <i data-lucide="check" class="text-accent w-5 h-5"></i>
+                            </div>
+                            <span class="font-medium text-slate-700">Global Frame Brands</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="bg-slate-100 p-2 rounded-full">
+                                <i data-lucide="check" class="text-accent w-5 h-5"></i>
+                            </div>
+                            <span class="font-medium text-slate-700">Precision Lenses</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="bg-slate-100 p-2 rounded-full">
+                                <i data-lucide="check" class="text-accent w-5 h-5"></i>
+                            </div>
+                            <span class="font-medium text-slate-700">Lifetime Adjustments</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-sm font-bold text-accent uppercase tracking-widest mb-4">What We Do</h2>
+                <h3 class="text-4xl font-bold text-primary mb-6">Comprehensive Eye Care Services</h3>
+                <p class="text-slate-600">From precision diagnostics to the final fitting, we provide a full spectrum of optical services tailored to your needs.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-slate-100 group reveal">
+                    <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
+                        <i data-lucide="eye" class="text-primary group-hover:text-white w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-primary mb-4">Free Vision Testing</h4>
+                    <p class="text-slate-600 mb-6">Advanced diagnostic equipment and expert optometrists to ensure your prescription is perfectly accurate.</p>
+                    <a href="#contact" class="text-accent font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-slate-100 group reveal">
+                    <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
+                        <i data-lucide="frame" class="text-primary group-hover:text-white w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-primary mb-4">Prescription Eyeglasses</h4>
+                    <p class="text-slate-600 mb-6">A massive collection of designer and budget-friendly frames paired with high-quality lenses.</p>
+                    <a href="#contact" class="text-accent font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-slate-100 group reveal">
+                    <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
+                        <i data-lucide="settings" class="text-primary group-hover:text-white w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-primary mb-4">Fitting & Adjustments</h4>
+                    <p class="text-slate-600 mb-6">Expert frame fitting and free lifetime adjustments to ensure your eyewear remains comfortable.</p>
+                    <a href="#contact" class="text-accent font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Gallery -->
+    <section id="gallery" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 reveal">
+                <div class="max-w-xl">
+                    <h2 class="text-sm font-bold text-accent uppercase tracking-widest mb-4">The Collection</h2>
+                    <h3 class="text-4xl font-bold text-primary mb-0">Discover Your Perfect Look</h3>
+                </div>
+                <div class="flex gap-2">
+                    <button class="px-6 py-2 rounded-full bg-primary text-white text-sm font-medium">All Frames</button>
+                    <button class="px-6 py-2 rounded-full bg-slate-100 text-slate-600 text-sm font-medium hover:bg-slate-200 transition-colors">Trendy</button>
+                    <button class="px-6 py-2 rounded-full bg-slate-100 text-slate-600 text-sm font-medium hover:bg-slate-200 transition-colors">Classic</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Frame 1 -->
+                <div class="group frame-card reveal">
+                    <div class="relative overflow-hidden rounded-2xl aspect-square mb-4 bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&q=80&w=800" alt="Frame 1" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase text-primary">New Arrival</div>
+                    </div>
+                    <h5 class="text-lg font-bold text-primary">Urban Classic Gold</h5>
+                    <p class="text-slate-500 text-sm">Premium Titanium Series</p>
+                </div>
+
+                <!-- Frame 2 -->
+                <div class="group frame-card reveal" style="transition-delay: 100ms;">
+                    <div class="relative overflow-hidden rounded-2xl aspect-square mb-4 bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&q=80&w=800" alt="Frame 2" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <h5 class="text-lg font-bold text-primary">Modern Matte Black</h5>
+                    <p class="text-slate-500 text-sm">Lightweight Acetate</p>
+                </div>
+
+                <!-- Frame 3 -->
+                <div class="group frame-card reveal" style="transition-delay: 200ms;">
+                    <div class="relative overflow-hidden rounded-2xl aspect-square mb-4 bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800" alt="Frame 3" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <h5 class="text-lg font-bold text-primary">Vintage Tortoise</h5>
+                    <p class="text-slate-500 text-sm">Eco-friendly Collection</p>
+                </div>
+
+                <!-- Frame 4 -->
+                <div class="group frame-card reveal" style="transition-delay: 300ms;">
+                    <div class="relative overflow-hidden rounded-2xl aspect-square mb-4 bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1591076482161-42ce6da69f67?auto=format&fit=crop&q=80&w=800" alt="Frame 4" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-accent text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase">Popular</div>
+                    </div>
+                    <h5 class="text-lg font-bold text-primary">Crystal Clear Frames</h5>
+                    <p class="text-slate-500 text-sm">Modern Minimalist</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center reveal">
+                <a href="https://wa.me/919847865050?text=can%20I%20see%20more%20frame%20designs" class="inline-flex items-center gap-3 text-primary font-bold border-b-2 border-accent pb-1 hover:text-accent transition-colors">
+                    View Entire Collection on WhatsApp <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-primary text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="text-accent font-bold uppercase tracking-widest mb-4">Contact Us</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold mb-8">Visit our store in Thrissur.</h3>
+                    
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="bg-white/10 p-4 rounded-2xl h-fit">
+                                <i data-lucide="map-pin" class="text-accent w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1">Our Location</h4>
+                                <p class="text-slate-400">Erinjery Angadi, Thrissur, Kerala, India</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6">
+                            <div class="bg-white/10 p-4 rounded-2xl h-fit">
+                                <i data-lucide="phone" class="text-accent w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1">Call / WhatsApp</h4>
+                                <p class="text-slate-400">+91 9847865050</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6">
+                            <div class="bg-white/10 p-4 rounded-2xl h-fit">
+                                <i data-lucide="mail" class="text-accent w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-1">Email Us</h4>
+                                <p class="text-slate-400">test@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 flex gap-4">
+                        <a href="#" class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-accent transition-all">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-accent transition-all">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center hover:bg-accent transition-all">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <div class="bg-white p-8 md:p-12 rounded-3xl">
+                        <h4 class="text-2xl font-bold text-primary mb-6">Send us a Message</h4>
+                        <form class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-accent/50" placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Phone Number</label>
+                                    <input type="tel" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-accent/50" placeholder="+91 0000 000000">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Message</label>
+                                <textarea rows="4" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-accent/50" placeholder="How can we help you?"></textarea>
+                            </div>
+                            <button class="w-full bg-accent hover:bg-amber-600 text-white font-bold py-4 rounded-xl transition-all shadow-lg">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 border-t border-slate-200 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="bg-primary p-2 rounded-lg">
+                            <i data-lucide="glasses" class="text-white w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <span class="text-xl font-bold tracking-tight text-primary block leading-none">SPECTACLES</span>
+                            <span class="text-[10px] uppercase tracking-[0.2em] text-accent font-semibold">Merchant Frames Centre</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-500 max-w-sm leading-relaxed">
+                        Redefining the way Thrissur sees the world. Premium quality, professional care, and the latest trends in global eyewear.
+                    </p>
+                </div>
+                
+                <div>
+                    <h5 class="text-primary font-bold mb-6">Quick Links</h5>
+                    <ul class="space-y-4 text-slate-500">
+                        <li><a href="#home" class="hover:text-accent transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-accent transition-colors">About Us</a></li>
+                        <li><a href="#services" class="hover:text-accent transition-colors">Services</a></li>
+                        <li><a href="#gallery" class="hover:text-accent transition-colors">Gallery</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-primary font-bold mb-6">Business Hours</h5>
+                    <ul class="space-y-4 text-slate-500">
+                        <li class="flex justify-between"><span>Mon - Sat:</span> <span>9:30 AM - 8 PM</span></li>
+                        <li class="flex justify-between"><span>Sunday:</span> <span class="text-accent">Closed</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-200 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-slate-400 text-sm">
+                    &copy; 2023 Spectacles Merchant Frames Centre. All rights reserved.
+                </p>
+                <div class="flex gap-8 text-sm text-slate-400">
+                    <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/919847865050?text=can%20I%20know%20more%20details" class="fixed bottom-8 right-8 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform z-50 group">
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
+        <span class="absolute right-full mr-4 bg-white text-slate-900 px-4 py-2 rounded-lg text-sm font-bold shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Chat with us</span>
+    </a>
+
+    <script>
+        // Initialize Lucide
+        lucide.createIcons();
+
+        // Reveal animations on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Sticky Nav Change
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+            }
+        });
+    </script>
+</body>
+</html>
