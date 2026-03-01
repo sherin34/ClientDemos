@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>asdf | asdfasdf</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .red-gradient {
+            background: linear-gradient(135deg, #ef4444 0%, #991b1b 100%);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ef4444;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+
+    <!-- Header & Navigation -->
+    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">A</div>
+                <span class="text-2xl font-bold tracking-tight text-slate-800">asdf</span>
+            </div>
+            
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="#home" class="nav-link relative text-slate-600 hover:text-red-600 transition-colors">Home</a>
+                <a href="#about" class="nav-link relative text-slate-600 hover:text-red-600 transition-colors">About</a>
+                <a href="#services" class="nav-link relative text-slate-600 hover:text-red-600 transition-colors">Services</a>
+                <a href="#gallery" class="nav-link relative text-slate-600 hover:text-red-600 transition-colors">Showcase</a>
+                <a href="#contact" class="nav-link relative text-slate-600 hover:text-red-600 transition-colors">Contact</a>
+            </div>
+
+            <a href="https://wa.me/2347012619446?text=can%20I%20know%20more%20details" target="_blank" class="hidden md:flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-full transition-all transform hover:scale-105 shadow-lg shadow-red-200">
+                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                <span>Get Started</span>
+            </a>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-slate-800" id="menuBtn">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-100 absolute w-full left-0 px-6 py-6 space-y-4 shadow-xl">
+            <a href="#home" class="block text-slate-600 font-medium">Home</a>
+            <a href="#about" class="block text-slate-600 font-medium">About</a>
+            <a href="#services" class="block text-slate-600 font-medium">Services</a>
+            <a href="#gallery" class="block text-slate-600 font-medium">Showcase</a>
+            <a href="#contact" class="block text-slate-600 font-medium">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center space-x-2 bg-red-50 text-red-600 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                    </span>
+                    <span>Modern & Professional</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold text-slate-900 leading-[1.1]">
+                    Experience <span class="text-red-600">asdf</span> <br>
+                    <span class="text-slate-400">asdfasdf</span>
+                </h1>
+                <p class="text-lg text-slate-600 max-w-lg leading-relaxed">
+                    asdfsadf. We specialize in providing top-tier solutions that redefine excellence and drive success in every project we undertake.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#services" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl text-center font-bold transition-all hover:shadow-2xl hover:shadow-red-200">
+                        Explore Services
+                    </a>
+                    <a href="#gallery" class="border-2 border-slate-200 hover:border-red-600 px-8 py-4 rounded-xl text-center font-bold text-slate-700 hover:text-red-600 transition-all">
+                        View Our Work
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-red-100 rounded-full blur-3xl opacity-60"></div>
+                <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-red-50 rounded-full blur-3xl opacity-60"></div>
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-700">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" alt="Modern Office" class="w-full h-[500px] object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-24 bg-white reveal">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600" alt="Team" class="rounded-2xl shadow-lg mt-8">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600" alt="Meeting" class="rounded-2xl shadow-lg">
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 space-y-6">
+                    <h2 class="text-red-600 font-bold tracking-widest uppercase text-sm">About Us</h2>
+                    <h3 class="text-4xl font-bold text-slate-900 leading-tight">Crafting Excellence with Passion and Precision</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        asdfsadf. Our journey began with a simple mission: to deliver unparalleled quality in everything we do. At asdf, we combine modern aesthetics with professional reliability to meet your every need.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-red-100 p-2 rounded-lg text-red-600">
+                                <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Innovative Approach</h4>
+                                <p class="text-slate-500">We leverage the latest technologies to ensure your success.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-red-100 p-2 rounded-lg text-red-600">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Expert Team</h4>
+                                <p class="text-slate-500">Our professionals are dedicated to your vision and goals.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-slate-50 reveal">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">Core Services</h2>
+                <h3 class="text-4xl font-bold text-slate-900">What We Offer</h3>
+                <p class="text-slate-600 mt-4">sdfsa - Comprehensive solutions tailored specifically for your unique requirements.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                    <div class="w-14 h-14 bg-red-600 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 text-slate-900">Strategic Planning</h4>
+                    <p class="text-slate-600 mb-6 leading-relaxed">Dedicated focus on sdfsa to ensure your project starts with a solid foundation and clear goals.</p>
+                    <a href="#" class="text-red-600 font-semibold flex items-center space-x-2 group-hover:translate-x-2 transition-transform">
+                        <span>Learn More</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                    <div class="w-14 h-14 bg-red-600 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="layers" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 text-slate-900">Modern Design</h4>
+                    <p class="text-slate-600 mb-6 leading-relaxed">Implementing sdfsa across all design phases to deliver visually stunning and functional results.</p>
+                    <a href="#" class="text-red-600 font-semibold flex items-center space-x-2 group-hover:translate-x-2 transition-transform">
+                        <span>Learn More</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                    <div class="w-14 h-14 bg-red-600 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 text-slate-900">Quality Assurance</h4>
+                    <p class="text-slate-600 mb-6 leading-relaxed">Rigorous testing and sdfsa protocols to guarantee the highest standards of professional output.</p>
+                    <a href="#" class="text-red-600 font-semibold flex items-center space-x-2 group-hover:translate-x-2 transition-transform">
+                        <span>Learn More</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section id="gallery" class="py-24 bg-white reveal">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="max-w-xl">
+                    <h2 class="text-red-600 font-bold tracking-widest uppercase text-sm mb-4">Our Showcase</h2>
+                    <h3 class="text-4xl font-bold text-slate-900">Excellence in Action</h3>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="p-3 border border-slate-200 rounded-full hover:bg-red-600 hover:text-white transition-colors">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <button class="p-3 border border-slate-200 rounded-full hover:bg-red-600 hover:text-white transition-colors">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="group relative overflow-hidden rounded-3xl h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Project 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                        <span class="text-red-400 font-bold text-sm uppercase mb-2">Modern Solution</span>
+                        <h4 class="text-white text-2xl font-bold">Project Alpha</h4>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="group relative overflow-hidden rounded-3xl h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800" alt="Project 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                        <span class="text-red-400 font-bold text-sm uppercase mb-2">Professional Execution</span>
+                        <h4 class="text-white text-2xl font-bold">Project Beta</h4>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="group relative overflow-hidden rounded-3xl h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" alt="Project 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                        <span class="text-red-400 font-bold text-sm uppercase mb-2">Elite Design</span>
+                        <h4 class="text-white text-2xl font-bold">Project Gamma</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-900 text-white reveal overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-red-600/10 skew-x-12 translate-x-20"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-red-500 font-bold tracking-widest uppercase text-sm mb-4">Contact Us</h2>
+                    <h3 class="text-4xl font-bold mb-8">Let's Build Something <br>Great Together</h3>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-center space-x-6">
+                            <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-red-500">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-slate-400 text-sm">Email Address</p>
+                                <a href="mailto:metercotton@gmail.com" class="text-lg font-semibold hover:text-red-500">metercotton@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-6">
+                            <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-red-500">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-slate-400 text-sm">Phone / WhatsApp</p>
+                                <a href="tel:07012619446" class="text-lg font-semibold hover:text-red-500">07012619446</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-6">
+                            <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-red-500">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-slate-400 text-sm">Location</p>
+                                <p class="text-lg font-semibold">Trinity line, Ollur</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-red-600 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-red-600 transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-red-600 transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 md:p-10 text-slate-900">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-slate-700">Full Name</label>
+                                <input type="text" placeholder="John Doe" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-slate-700">Email</label>
+                                <input type="email" placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all">
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700">Subject</label>
+                            <input type="text" placeholder="How can we help?" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700">Message</label>
+                            <textarea rows="4" placeholder="Your message here..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-red-600/20 focus:border-red-600 transition-all"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-red-200">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 py-12 border-t border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-red-600 rounded flex items-center justify-center text-white font-bold">A</div>
+                    <span class="text-xl font-bold tracking-tight text-slate-800">asdf</span>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-8 text-slate-500 font-medium">
+                    <a href="#home" class="hover:text-red-600 transition-colors">Home</a>
+                    <a href="#about" class="hover:text-red-600 transition-colors">About</a>
+                    <a href="#services" class="hover:text-red-600 transition-colors">Services</a>
+                    <a href="#gallery" class="hover:text-red-600 transition-colors">Gallery</a>
+                    <a href="#contact" class="hover:text-red-600 transition-colors">Contact</a>
+                </div>
+
+                <div class="text-slate-400 text-sm">
+                    © 2024 asdf. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/2347012619446?text=can%20I%20know%20more%20details" target="_blank" class="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+    </a>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Reveal Animation on Scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Initial check
+
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
