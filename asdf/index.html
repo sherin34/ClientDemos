@@ -4,207 +4,220 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>asdf | asdfasdf</title>
+    <meta name="description" content="asdfsadf">
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
-        .animate-fade-in {
-            animation: fadeIn 1s ease-out forwards;
+        .text-gradient {
+            background: linear-gradient(to right, #dc2626, #7f1d1d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .animate-slide-up {
-            animation: slideUp 0.8s ease-out forwards;
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #dc2626;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.1), 0 8px 10px -6px rgba(220, 38, 38, 0.1);
         }
     </style>
 </head>
-<body class="bg-zinc-50 text-zinc-900 overflow-x-hidden">
+<body class="font-sans text-zinc-800 bg-white">
 
-    <!-- Header -->
-    <header class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-zinc-100" id="navbar">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">A</div>
-                <span class="text-2xl font-extrabold tracking-tighter text-zinc-900 uppercase">asdf</span>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-zinc-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">A</div>
+                    <span class="text-2xl font-bold tracking-tight text-zinc-900 uppercase">asdf</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-zinc-600 hover:text-primary-600 font-medium transition-colors">Home</a>
+                    <a href="#about" class="text-zinc-600 hover:text-primary-600 font-medium transition-colors">About</a>
+                    <a href="#services" class="text-zinc-600 hover:text-primary-600 font-medium transition-colors">Services</a>
+                    <a href="#gallery" class="text-zinc-600 hover:text-primary-600 font-medium transition-colors">Showcase</a>
+                    <a href="#contact" class="bg-primary-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-primary-700 transition-all shadow-lg shadow-primary-200">Contact Us</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-zinc-900">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
             </div>
-            
-            <nav class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest">
-                <a href="#home" class="nav-link relative text-zinc-600 hover:text-red-600 transition">Home</a>
-                <a href="#about" class="nav-link relative text-zinc-600 hover:text-red-600 transition">About</a>
-                <a href="#services" class="nav-link relative text-zinc-600 hover:text-red-600 transition">Services</a>
-                <a href="#showcase" class="nav-link relative text-zinc-600 hover:text-red-600 transition">Showcase</a>
-                <a href="#contact" class="nav-link relative text-zinc-600 hover:text-red-600 transition">Contact</a>
-            </nav>
-
-            <div class="hidden md:block">
-                <a href="https://wa.me/07012619446?text=can%20I%20know%20more%20details" class="bg-red-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-red-700 transition-all shadow-lg shadow-red-200">
-                    Get Started
-                </a>
-            </div>
-
-            <button class="md:hidden text-zinc-900" id="menuBtn">
-                <i data-lucide="menu"></i>
-            </button>
         </div>
-
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-zinc-100 px-6 py-6 absolute w-full shadow-xl">
-            <div class="flex flex-col space-y-4 font-medium uppercase tracking-widest text-sm">
-                <a href="#home" class="text-zinc-600">Home</a>
-                <a href="#about" class="text-zinc-600">About</a>
-                <a href="#services" class="text-zinc-600">Services</a>
-                <a href="#showcase" class="text-zinc-600">Showcase</a>
-                <a href="#contact" class="text-zinc-600">Contact</a>
-            </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-zinc-100 px-4 py-4 space-y-4">
+            <a href="#home" class="block text-zinc-600 font-medium">Home</a>
+            <a href="#about" class="block text-zinc-600 font-medium">About</a>
+            <a href="#services" class="block text-zinc-600 font-medium">Services</a>
+            <a href="#gallery" class="block text-zinc-600 font-medium">Showcase</a>
+            <a href="#contact" class="block text-primary-600 font-bold">Contact Us</a>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/2 h-full bg-red-50 -z-10 rounded-l-[100px] hidden lg:block"></div>
-        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-            <div class="animate-slide-up">
-                <span class="inline-block py-1 px-4 rounded-full bg-red-100 text-red-600 text-xs font-bold uppercase tracking-widest mb-6">
-                    Innovation Redefined
-                </span>
-                <h1 class="text-6xl lg:text-8xl font-extrabold leading-tight text-zinc-900 mb-6">
-                    asdf<br><span class="text-red-600">asdfasdf</span>
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" alt="Hero Background" class="w-full h-full object-cover opacity-10">
+            <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl" data-aos="fade-right" data-aos-duration="1000">
+                <span class="inline-block py-1 px-3 rounded-full bg-primary-100 text-primary-700 text-sm font-bold tracking-wider uppercase mb-6">Expert Solutions</span>
+                <h1 class="text-5xl md:text-7xl font-bold text-zinc-900 mb-6 leading-tight">
+                    <span class="text-gradient">asdfasdf</span> <br>Beyond Excellence.
                 </h1>
-                <p class="text-lg text-zinc-600 mb-10 max-w-lg leading-relaxed">
-                    asdfsadf. We deliver cutting-edge solutions tailored to your unique business needs. Experience the fusion of creativity and professional precision.
+                <p class="text-lg md:text-xl text-zinc-600 mb-10 leading-relaxed max-w-2xl">
+                    asdfsadf. Delivering high-quality professional services tailored to your unique business needs with precision and care.
                 </p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#services" class="bg-red-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-red-700 transition-all text-center shadow-xl shadow-red-200">
-                        Explore Services
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="flex items-center justify-center gap-2 bg-primary-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-700 transition-all shadow-xl shadow-primary-200">
+                        Get Started <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </a>
-                    <a href="#contact" class="border-2 border-zinc-900 text-zinc-900 px-8 py-4 rounded-xl font-bold hover:bg-zinc-900 hover:text-white transition-all text-center">
-                        Contact Us
+                    <a href="#services" class="flex items-center justify-center gap-2 bg-white border-2 border-zinc-200 text-zinc-700 px-8 py-4 rounded-xl font-bold text-lg hover:border-primary-600 hover:text-primary-600 transition-all">
+                        Our Services
                     </a>
                 </div>
             </div>
-            <div class="relative animate-fade-in">
-                <div class="absolute -top-10 -left-10 w-32 h-32 bg-red-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-                <div class="rounded-[40px] overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-700">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Hero Image" class="w-full h-[500px] object-cover">
-                </div>
-            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
+            <i data-lucide="chevron-down" class="text-zinc-400 w-8 h-8"></i>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 bg-white">
-        <div class="container mx-auto px-6">
+    <section id="about" class="py-24 bg-zinc-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <div class="grid grid-cols-2 gap-4">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=400" alt="Team" class="rounded-3xl shadow-lg mt-12">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=400" alt="Meeting" class="rounded-3xl shadow-lg">
+                <div class="relative" data-aos="fade-up">
+                    <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" alt="About Image" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-white p-8 rounded-2xl shadow-xl hidden md:block">
+                        <div class="text-primary-600 text-4xl font-bold mb-1 italic">10+</div>
+                        <div class="text-zinc-500 font-medium">Years of Experience</div>
                     </div>
                 </div>
-                <div class="reveal">
-                    <h2 class="text-4xl font-bold mb-6">About <span class="text-red-600">asdf</span></h2>
-                    <p class="text-zinc-600 mb-8 leading-relaxed">
-                        With a foundation built on excellence, asdf is dedicated to transforming ideas into reality. Our mission is to provide asdfsadf through innovative strategies and a client-centric approach.
+                <div data-aos="fade-left">
+                    <h2 class="text-zinc-400 font-bold uppercase tracking-widest text-sm mb-4">About Us</h2>
+                    <h3 class="text-4xl font-bold text-zinc-900 mb-6">Redefining standards in the industry through <span class="text-primary-600 underline">asdf</span></h3>
+                    <p class="text-zinc-600 text-lg mb-8 leading-relaxed">
+                        asdfsadf. We pride ourselves on a commitment to quality and a passion for innovation. Our team is dedicated to providing the best results for our clients, ensuring every project is handled with the utmost professional integrity.
                     </p>
-                    <div class="space-y-4">
-                        <div class="flex items-start space-x-4">
-                            <div class="mt-1 bg-red-100 p-2 rounded-lg text-red-600">
-                                <i data-lucide="check-circle" class="w-5 h-5"></i>
+                    <div class="grid sm:grid-cols-2 gap-6 mb-10">
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="check" class="w-4 h-4 text-primary-600"></i>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-lg">Professional Excellence</h4>
-                                <p class="text-zinc-500 text-sm">We maintain the highest standards in every project we undertake.</p>
-                            </div>
+                            <span class="text-zinc-700 font-medium">Professional Excellence</span>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="mt-1 bg-red-100 p-2 rounded-lg text-red-600">
-                                <i data-lucide="zap" class="w-5 h-5"></i>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="check" class="w-4 h-4 text-primary-600"></i>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-lg">Modern Innovation</h4>
-                                <p class="text-zinc-500 text-sm">Utilizing the latest technology to drive results for our clients.</p>
+                            <span class="text-zinc-700 font-medium">Modern Approach</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="check" class="w-4 h-4 text-primary-600"></i>
                             </div>
+                            <span class="text-zinc-700 font-medium">Client Focused</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="check" class="w-4 h-4 text-primary-600"></i>
+                            </div>
+                            <span class="text-zinc-700 font-medium">24/7 Support</span>
                         </div>
                     </div>
+                    <a href="#contact" class="inline-block text-primary-600 font-bold border-b-2 border-primary-600 pb-1 hover:text-primary-800 hover:border-primary-800 transition-all">Learn more about our mission</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-24 bg-zinc-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <h2 class="text-4xl font-bold mb-4">Core Services</h2>
-                <div class="w-20 h-1.5 bg-red-600 mx-auto rounded-full mb-6"></div>
-                <p class="text-zinc-600">We offer specialized solutions in sdfsa to help your business reach its full potential.</p>
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-primary-600 font-bold uppercase tracking-widest text-sm mb-4">Our Services</h2>
+                <h3 class="text-4xl font-bold text-zinc-900 mb-6">Tailored Solutions for Your Needs</h3>
+                <p class="text-zinc-600">We offer a comprehensive range of services designed to help you achieve your goals effectively.</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="bg-white p-10 rounded-[32px] shadow-sm hover:shadow-xl transition-all duration-300 group reveal border border-zinc-100">
-                    <div class="w-16 h-16 bg-zinc-50 rounded-2xl flex items-center justify-center text-red-600 mb-8 group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
-                        <i data-lucide="layers" class="w-8 h-8"></i>
+                <div class="p-8 rounded-3xl bg-zinc-50 hover:bg-white border border-transparent hover:border-primary-100 hover-lift transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-primary-600 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-primary-200">
+                        <i data-lucide="layers" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Strategic Design</h3>
-                    <p class="text-zinc-500 leading-relaxed mb-6">Deep dive into sdfsa with our comprehensive strategic design methodologies.</p>
-                    <a href="#" class="text-red-600 font-bold flex items-center group-hover:translate-x-2 transition-transform">
-                        Learn More <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    <h4 class="text-xl font-bold text-zinc-900 mb-4">sdfsa</h4>
+                    <p class="text-zinc-600 leading-relaxed mb-6">Our core offering focuses on delivering sdfsa with unparalleled attention to detail and professional standards.</p>
+                    <a href="#" class="text-primary-600 font-semibold flex items-center gap-2 group">
+                        Explore Service <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
 
                 <!-- Service 2 -->
-                <div class="bg-white p-10 rounded-[32px] shadow-sm hover:shadow-xl transition-all duration-300 group reveal border border-zinc-100" style="transition-delay: 100ms;">
-                    <div class="w-16 h-16 bg-zinc-50 rounded-2xl flex items-center justify-center text-red-600 mb-8 group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
-                        <i data-lucide="cpu" class="w-8 h-8"></i>
+                <div class="p-8 rounded-3xl bg-zinc-50 hover:bg-white border border-transparent hover:border-primary-100 hover-lift transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-primary-600 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-primary-200">
+                        <i data-lucide="zap" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Tech Integration</h3>
-                    <p class="text-zinc-500 leading-relaxed mb-6">Seamlessly integrate sdfsa into your existing infrastructure for better efficiency.</p>
-                    <a href="#" class="text-red-600 font-bold flex items-center group-hover:translate-x-2 transition-transform">
-                        Learn More <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    <h4 class="text-xl font-bold text-zinc-900 mb-4">Dynamic Strategy</h4>
+                    <p class="text-zinc-600 leading-relaxed mb-6">Accelerate your growth with our dynamic strategic planning and implementation services tailored for modern markets.</p>
+                    <a href="#" class="text-primary-600 font-semibold flex items-center gap-2 group">
+                        Explore Service <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="bg-white p-10 rounded-[32px] shadow-sm hover:shadow-xl transition-all duration-300 group reveal border border-zinc-100" style="transition-delay: 200ms;">
-                    <div class="w-16 h-16 bg-zinc-50 rounded-2xl flex items-center justify-center text-red-600 mb-8 group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
-                        <i data-lucide="bar-chart-3" class="w-8 h-8"></i>
+                <div class="p-8 rounded-3xl bg-zinc-50 hover:bg-white border border-transparent hover:border-primary-100 hover-lift transition-all" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-primary-600 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-primary-200">
+                        <i data-lucide="shield" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Growth Analytics</h3>
-                    <p class="text-zinc-500 leading-relaxed mb-6">Data-driven insights to monitor and accelerate your business growth through sdfsa.</p>
-                    <a href="#" class="text-red-600 font-bold flex items-center group-hover:translate-x-2 transition-transform">
-                        Learn More <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    <h4 class="text-xl font-bold text-zinc-900 mb-4">Premium Support</h4>
+                    <p class="text-zinc-600 leading-relaxed mb-6">Get the security and reliability you deserve with our premium support packages and dedicated account managers.</p>
+                    <a href="#" class="text-primary-600 font-semibold flex items-center gap-2 group">
+                        Explore Service <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
             </div>
@@ -212,39 +225,39 @@
     </section>
 
     <!-- Showcase Section -->
-    <section id="showcase" class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 reveal">
-                <div>
-                    <h2 class="text-4xl font-bold mb-4">Our Showcase</h2>
-                    <p class="text-zinc-600 max-w-md">A glimpse into our recent projects and creative excellence.</p>
+    <section id="gallery" class="py-24 bg-zinc-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div class="max-w-2xl" data-aos="fade-right">
+                    <h2 class="text-primary-500 font-bold uppercase tracking-widest text-sm mb-4">Our Showcase</h2>
+                    <h3 class="text-4xl font-bold mb-6">The Work We're Proud Of</h3>
+                    <p class="text-zinc-400">Take a look at some of our recent projects and the impact we've made for our clients globally.</p>
                 </div>
-                <div class="mt-6 md:mt-0">
-                    <span class="text-zinc-400 font-medium">Selected Works (2023-2024)</span>
+                <div data-aos="fade-left">
+                    <a href="#" class="inline-block bg-white text-zinc-900 px-8 py-3 rounded-full font-bold hover:bg-primary-500 hover:text-white transition-all">View All Projects</a>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Gallery Items -->
-                <div class="group relative overflow-hidden rounded-3xl reveal">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=600" class="w-full h-80 object-cover transition duration-700 group-hover:scale-110" alt="Project 1">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                        <p class="text-red-500 font-bold text-sm mb-2">MODERN ARCHITECTURE</p>
-                        <h4 class="text-white text-2xl font-bold uppercase">Project Alpha</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group relative overflow-hidden rounded-3xl aspect-[4/5]" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80" alt="Project 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
+                        <span class="text-primary-500 font-bold mb-2">Corporate</span>
+                        <h4 class="text-2xl font-bold">Modern Transformation</h4>
                     </div>
                 </div>
-                <div class="group relative overflow-hidden rounded-3xl reveal" style="transition-delay: 100ms;">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600" class="w-full h-80 object-cover transition duration-700 group-hover:scale-110" alt="Project 2">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                        <p class="text-red-500 font-bold text-sm mb-2">DIGITAL SPACES</p>
-                        <h4 class="text-white text-2xl font-bold uppercase">Project Beta</h4>
+                <div class="group relative overflow-hidden rounded-3xl aspect-[4/5]" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80" alt="Project 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
+                        <span class="text-primary-500 font-bold mb-2">Architecture</span>
+                        <h4 class="text-2xl font-bold">Structural Elegance</h4>
                     </div>
                 </div>
-                <div class="group relative overflow-hidden rounded-3xl reveal" style="transition-delay: 200ms;">
-                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600" class="w-full h-80 object-cover transition duration-700 group-hover:scale-110" alt="Project 3">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                        <p class="text-red-500 font-bold text-sm mb-2">CORPORATE DESIGN</p>
-                        <h4 class="text-white text-2xl font-bold uppercase">Project Gamma</h4>
+                <div class="group relative overflow-hidden rounded-3xl aspect-[4/5]" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" alt="Project 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
+                        <span class="text-primary-500 font-bold mb-2">Technology</span>
+                        <h4 class="text-2xl font-bold">Digital Innovation</h4>
                     </div>
                 </div>
             </div>
@@ -252,153 +265,187 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-zinc-900 text-white overflow-hidden relative">
-        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-red-600 rounded-full blur-[120px]"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-600 rounded-full blur-[120px]"></div>
-        </div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16">
-                <div class="reveal">
-                    <h2 class="text-5xl font-extrabold mb-8">Let's start a <br><span class="text-red-600 underline">conversation.</span></h2>
-                    <p class="text-zinc-400 mb-12 text-lg">Ready to take the next step? Contact us today and let's discuss how we can help you achieve your goals.</p>
-                    
-                    <div class="space-y-8">
-                        <div class="flex items-center space-x-6">
-                            <div class="w-14 h-14 bg-zinc-800 rounded-2xl flex items-center justify-center text-red-500">
-                                <i data-lucide="mail"></i>
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-zinc-50 rounded-[3rem] p-8 md:p-16 overflow-hidden relative">
+                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-primary-100 rounded-full opacity-50"></div>
+                
+                <div class="grid lg:grid-cols-2 gap-16 relative z-10">
+                    <div data-aos="fade-right">
+                        <h2 class="text-primary-600 font-bold uppercase tracking-widest text-sm mb-4">Contact Us</h2>
+                        <h3 class="text-4xl font-bold text-zinc-900 mb-8">Let's build something <br>extraordinary together.</h3>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-6">
+                                <div class="w-12 h-12 bg-white rounded-xl shadow-md flex items-center justify-center text-primary-600 flex-shrink-0">
+                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-zinc-900">Our Location</h4>
+                                    <p class="text-zinc-600">Trinity line, Ollur</p>
+                                </div>
                             </div>
-                            <div>
-                                <p class="text-zinc-500 text-sm uppercase font-bold tracking-widest">Email Us</p>
-                                <a href="mailto:metercotton@gmail.com" class="text-xl font-bold hover:text-red-500 transition">metercotton@gmail.com</a>
+                            <div class="flex items-start gap-6">
+                                <div class="w-12 h-12 bg-white rounded-xl shadow-md flex items-center justify-center text-primary-600 flex-shrink-0">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-zinc-900">Email Us</h4>
+                                    <p class="text-zinc-600">metercotton@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-6">
+                                <div class="w-12 h-12 bg-white rounded-xl shadow-md flex items-center justify-center text-primary-600 flex-shrink-0">
+                                    <i data-lucide="phone" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-zinc-900">Call / WhatsApp</h4>
+                                    <p class="text-zinc-600">07012619446</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-6">
-                            <div class="w-14 h-14 bg-zinc-800 rounded-2xl flex items-center justify-center text-red-500">
-                                <i data-lucide="phone"></i>
-                            </div>
-                            <div>
-                                <p class="text-zinc-500 text-sm uppercase font-bold tracking-widest">Call / WhatsApp</p>
-                                <a href="tel:07012619446" class="text-xl font-bold hover:text-red-500 transition">07012619446</a>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-6">
-                            <div class="w-14 h-14 bg-zinc-800 rounded-2xl flex items-center justify-center text-red-500">
-                                <i data-lucide="map-pin"></i>
-                            </div>
-                            <div>
-                                <p class="text-zinc-500 text-sm uppercase font-bold tracking-widest">Visit Us</p>
-                                <p class="text-xl font-bold">Trinity line, Ollur</p>
-                            </div>
+
+                        <div class="mt-12 flex gap-4">
+                            <a href="https://wa.me/07012619446?text=can%20I%20know%20more%20details" target="_blank" class="bg-[#25D366] text-white px-8 py-3 rounded-full font-bold flex items-center gap-2 hover:scale-105 transition-transform shadow-lg">
+                                <i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp Us
+                            </a>
                         </div>
                     </div>
-                </div>
 
-                <div class="bg-white p-10 rounded-[40px] text-zinc-900 reveal">
-                    <form action="#" class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="text-sm font-bold uppercase tracking-wider text-zinc-500">Your Name</label>
-                                <input type="text" placeholder="John Doe" class="w-full px-6 py-4 bg-zinc-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 transition-all">
+                    <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl" data-aos="fade-left">
+                        <form action="#" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-bold text-zinc-700 mb-2">Full Name</label>
+                                    <input type="text" placeholder="John Doe" class="w-full px-4 py-3 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-zinc-700 mb-2">Email Address</label>
+                                    <input type="email" placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all">
+                                </div>
                             </div>
-                            <div class="space-y-2">
-                                <label class="text-sm font-bold uppercase tracking-wider text-zinc-500">Email Address</label>
-                                <input type="email" placeholder="john@example.com" class="w-full px-6 py-4 bg-zinc-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 transition-all">
+                            <div>
+                                <label class="block text-sm font-bold text-zinc-700 mb-2">Subject</label>
+                                <input type="text" placeholder="How can we help?" class="w-full px-4 py-3 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all">
                             </div>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-sm font-bold uppercase tracking-wider text-zinc-500">Message</label>
-                            <textarea rows="4" placeholder="How can we help?" class="w-full px-6 py-4 bg-zinc-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 transition-all"></textarea>
-                        </div>
-                        <button class="w-full bg-red-600 text-white py-5 rounded-2xl font-extrabold text-lg shadow-xl shadow-red-200 hover:bg-red-700 transition-all">
-                            Send Message
-                        </button>
-                    </form>
+                            <div>
+                                <label class="block text-sm font-bold text-zinc-700 mb-2">Message</label>
+                                <textarea rows="4" placeholder="Your message here..." class="w-full px-4 py-3 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-primary-700 transition-all shadow-lg shadow-primary-200">Send Message</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-zinc-950 text-zinc-400 py-16 border-t border-zinc-900">
-        <div class="container mx-auto px-6">
+    <footer class="bg-zinc-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-2">
-                    <div class="flex items-center space-x-2 mb-6">
-                        <div class="w-8 h-8 bg-red-600 rounded flex items-center justify-center text-white font-bold">A</div>
-                        <span class="text-2xl font-extrabold tracking-tighter text-white uppercase">asdf</span>
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold">A</div>
+                        <span class="text-xl font-bold uppercase">asdf</span>
                     </div>
-                    <p class="max-w-sm mb-8">asdfsadf. Leading the industry with innovative solutions and professional integrity since inception.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-zinc-900 rounded-full flex items-center justify-center hover:bg-red-600 hover:text-white transition-all"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                        <a href="#" class="w-10 h-10 bg-zinc-900 rounded-full flex items-center justify-center hover:bg-red-600 hover:text-white transition-all"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-                        <a href="#" class="w-10 h-10 bg-zinc-900 rounded-full flex items-center justify-center hover:bg-red-600 hover:text-white transition-all"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                        <a href="#" class="w-10 h-10 bg-zinc-900 rounded-full flex items-center justify-center hover:bg-red-600 hover:text-white transition-all"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <p class="text-zinc-400 leading-relaxed mb-6">
+                        asdfsadf. Leading the way in modern professional services with a focus on client satisfaction.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-primary-600 transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-primary-600 transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-primary-600 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-primary-600 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
                     </div>
                 </div>
+                
                 <div>
-                    <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Quick Links</h4>
-                    <ul class="space-y-4">
-                        <li><a href="#home" class="hover:text-red-500 transition">Home</a></li>
-                        <li><a href="#about" class="hover:text-red-500 transition">About Us</a></li>
-                        <li><a href="#services" class="hover:text-red-500 transition">Services</a></li>
-                        <li><a href="#showcase" class="hover:text-red-500 transition">Showcase</a></li>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-4 text-zinc-400">
+                        <li><a href="#home" class="hover:text-primary-500 transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-primary-500 transition-colors">About Us</a></li>
+                        <li><a href="#services" class="hover:text-primary-500 transition-colors">Our Services</a></li>
+                        <li><a href="#gallery" class="hover:text-primary-500 transition-colors">Showcase</a></li>
                     </ul>
                 </div>
+
                 <div>
-                    <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Support</h4>
-                    <ul class="space-y-4">
-                        <li><a href="#" class="hover:text-red-500 transition">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-red-500 transition">Terms of Service</a></li>
-                        <li><a href="#contact" class="hover:text-red-500 transition">Contact Us</a></li>
+                    <h4 class="text-lg font-bold mb-6">Services</h4>
+                    <ul class="space-y-4 text-zinc-400">
+                        <li><a href="#" class="hover:text-primary-500 transition-colors">sdfsa</a></li>
+                        <li><a href="#" class="hover:text-primary-500 transition-colors">Consulting</a></li>
+                        <li><a href="#" class="hover:text-primary-500 transition-colors">Development</a></li>
+                        <li><a href="#" class="hover:text-primary-500 transition-colors">Design</a></li>
                     </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Newsletter</h4>
+                    <p class="text-zinc-400 mb-4">Subscribe to our newsletter for updates.</p>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="Email" class="bg-zinc-800 border-none rounded-lg px-4 py-2 w-full focus:ring-2 focus:ring-primary-500">
+                        <button class="bg-primary-600 p-2 rounded-lg hover:bg-primary-700 transition-colors"><i data-lucide="send" class="w-5 h-5"></i></button>
+                    </div>
                 </div>
             </div>
-            <div class="pt-12 border-t border-zinc-900 text-center text-sm">
-                <p>&copy; 2024 asdf. All rights reserved. Designed with precision.</p>
+            
+            <div class="pt-12 border-t border-zinc-800 text-center text-zinc-500 text-sm">
+                <p>&copy; 2023 asdf. All rights reserved. Designed with precision.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
 
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+        });
+
         // Mobile Menu Toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        menuBtn.addEventListener('click', () => {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('py-2', 'shadow-lg');
-                navbar.classList.remove('py-4');
-            } else {
-                navbar.classList.remove('py-2', 'shadow-lg');
-                navbar.classList.add('py-4');
-            }
+        // Smooth Scroll Offset for Sticky Nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
         });
 
-        // Reveal on Scroll Animation
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
             }
-        }
-        window.addEventListener("scroll", reveal);
-        // Initial check
-        reveal();
+        });
     </script>
 </body>
 </html>
