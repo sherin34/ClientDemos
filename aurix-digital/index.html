@@ -3,414 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurix Digital | Digital Our Goal</title>
+    <title>Aurix Digital | Your Growth, Our Code</title>
+    <meta name="description" content="Aurix Digital - Premium software development and digital growth agency.">
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
-        body { font-family: 'Poppins', sans-serif; }
-        .gradient-text {
-            background: linear-gradient(90deg, #2563eb, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        body {
+            font-family: 'Poppins', sans-serif;
         }
-        .bg-blue-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .card-hover:hover {
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(245, 158, 11, 0.15), transparent),
+                        radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.1), transparent);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .service-card:hover {
             transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-        .nav-link::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: #2563eb;
-            transition: width .3s;
-        }
-        .nav-link:hover::after {
-            width: 100%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+<body class="bg-slate-950 text-slate-200 selection:bg-amber-500 selection:text-white">
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <i data-lucide="layers" class="text-white w-6 h-6"></i>
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="cpu" class="text-slate-950 w-6 h-6"></i>
                     </div>
-                    <span class="text-2xl font-bold tracking-tight text-slate-900 uppercase">aurix <span class="text-blue-600">digital</span></span>
+                    <span class="text-2xl font-bold tracking-tight text-white uppercase">Aurix<span class="text-amber-500">Digital</span></span>
                 </div>
-                
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="nav-link font-medium hover:text-blue-600">Home</a>
-                    <a href="#about" class="nav-link font-medium hover:text-blue-600">About</a>
-                    <a href="#services" class="nav-link font-medium hover:text-blue-600">Services</a>
-                    <a href="#showcase" class="nav-link font-medium hover:text-blue-600">Showcase</a>
-                    <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition-all shadow-lg shadow-blue-200">Get Started</a>
+                    <a href="#home" class="hover:text-amber-500 transition-colors">Home</a>
+                    <a href="#about" class="hover:text-amber-500 transition-colors">About</a>
+                    <a href="#services" class="hover:text-amber-500 transition-colors">Services</a>
+                    <a href="#portfolio" class="hover:text-amber-500 transition-colors">Showcase</a>
+                    <a href="#contact" class="bg-amber-500 text-slate-950 px-6 py-2 rounded-full font-semibold hover:bg-amber-400 transition-all">Get Started</a>
                 </div>
-
                 <div class="md:hidden">
-                    <button id="menu-btn" class="p-2">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    <button id="mobile-menu-button" class="text-white">
+                        <i data-lucide="menu"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-4 py-6 space-y-4">
-            <a href="#home" class="block font-medium">Home</a>
-            <a href="#about" class="block font-medium">About</a>
-            <a href="#services" class="block font-medium">Services</a>
-            <a href="#showcase" class="block font-medium">Showcase</a>
-            <a href="#contact" class="block font-medium text-blue-600">Contact Us</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-4 py-6 space-y-4">
+            <a href="#home" class="block text-lg">Home</a>
+            <a href="#about" class="block text-lg">About</a>
+            <a href="#services" class="block text-lg">Services</a>
+            <a href="#portfolio" class="block text-lg">Showcase</a>
+            <a href="#contact" class="block text-lg text-amber-500">Contact Us</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div class="absolute top-0 right-0 -z-10 w-1/2 h-full bg-blue-50/50 rounded-bl-[100px]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right" data-aos-duration="1000">
-                    <div class="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full mb-6">
-                        <span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
-                        <span class="text-sm font-semibold uppercase tracking-wider">Digital Our Goal</span>
-                    </div>
-                    <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
-                        Elevate Your <span class="gradient-text">Digital Presence</span>
-                    </h1>
-                    <p class="text-lg text-slate-600 mb-8 max-w-lg">
-                        Aurix Digital is a premier digital marketing agency dedicated to growing your brand through data-driven strategies and innovative creative solutions.
-                    </p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-all text-center shadow-xl shadow-blue-200">Start Your Journey</a>
-                        <a href="#services" class="bg-white border border-slate-200 text-slate-900 px-8 py-4 rounded-xl font-semibold hover:bg-slate-50 transition-all text-center">Our Services</a>
-                    </div>
+    <section id="home" class="relative min-h-screen flex items-center pt-20 hero-gradient overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <h2 class="text-amber-500 font-semibold tracking-widest uppercase mb-4">Innovation in every line</h2>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
+                    Your Growth, <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-600">Our Code.</span>
+                </h1>
+                <p class="text-lg text-slate-400 mb-10 max-w-lg">
+                    We bridge the gap between complex business challenges and elegant digital solutions. From custom software to strategic growth, Aurix Digital is your partner in the modern era.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="px-8 py-4 bg-amber-500 text-slate-950 rounded-xl font-bold text-lg hover:scale-105 transition-transform flex items-center gap-2">
+                        Start Your Project <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#portfolio" class="px-8 py-4 border border-slate-700 rounded-xl font-bold text-lg hover:bg-slate-800 transition-all">
+                        View Portfolio
+                    </a>
                 </div>
-                <div class="relative" data-aos="zoom-in" data-aos-duration="1000">
-                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000" alt="Digital Marketing" class="w-full h-auto">
+            </div>
+            <div class="relative reveal delay-200">
+                <div class="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1000" alt="Coding Background" class="w-full h-full object-cover opacity-80">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                </div>
+                <!-- Floating Card -->
+                <div class="absolute -bottom-6 -left-6 bg-slate-900 p-6 rounded-xl border border-slate-800 shadow-xl hidden md:block">
+                    <div class="flex items-center gap-4 mb-2">
+                        <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                        <span class="text-sm font-medium">System Online</span>
                     </div>
-                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl z-20 hidden md:block" data-aos="fade-up" data-aos-delay="400">
-                        <div class="flex items-center space-x-4">
-                            <div class="bg-green-100 p-3 rounded-full">
-                                <i data-lucide="trending-up" class="text-green-600"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-slate-500">Growth Rate</p>
-                                <p class="text-xl font-bold">+148%</p>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="text-xs text-slate-500">Processing digital growth strategies...</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Us -->
-    <section id="about" class="py-24 bg-white">
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-slate-900/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="order-2 lg:order-1" data-aos="fade-right">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000" alt="Team Work" class="rounded-3xl shadow-lg">
-                </div>
-                <div class="order-1 lg:order-2" data-aos="fade-left">
-                    <h2 class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">About Aurix Digital</h2>
-                    <h3 class="text-4xl font-bold mb-6">Crafting Success Stories in the Digital Landscape</h3>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
-                        At Aurix Digital, we believe that every brand has a unique story that deserves to be told. Our mission is to bridge the gap between businesses and their target audience using cutting-edge digital marketing techniques.
-                    </p>
-                    <div class="space-y-4 mb-8">
-                        <div class="flex items-start space-x-4">
-                            <div class="mt-1 bg-blue-100 p-1 rounded-full"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i></div>
-                            <p class="text-slate-700 font-medium">Result-oriented strategies tailored to your goals.</p>
+                <div class="reveal">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-4 pt-8">
+                            <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 text-center">
+                                <h3 class="text-4xl font-bold text-amber-500 mb-2">99%</h3>
+                                <p class="text-slate-400 text-sm">Client Satisfaction</p>
+                            </div>
+                            <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 text-center">
+                                <h3 class="text-4xl font-bold text-amber-500 mb-2">150+</h3>
+                                <p class="text-slate-400 text-sm">Projects Delivered</p>
+                            </div>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="mt-1 bg-blue-100 p-1 rounded-full"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i></div>
-                            <p class="text-slate-700 font-medium">Expert team with years of industry experience.</p>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="mt-1 bg-blue-100 p-1 rounded-full"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i></div>
-                            <p class="text-slate-700 font-medium">Transparent reporting and constant communication.</p>
+                        <div class="space-y-4">
+                            <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 text-center">
+                                <h3 class="text-4xl font-bold text-amber-500 mb-2">10+</h3>
+                                <p class="text-slate-400 text-sm">Years Experience</p>
+                            </div>
+                            <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 text-center">
+                                <h3 class="text-4xl font-bold text-amber-500 mb-2">24/7</h3>
+                                <p class="text-slate-400 text-sm">Dedicated Support</p>
+                            </div>
                         </div>
                     </div>
-                    <a href="https://wa.me/2347012619446?text=can%20I%20know%20more%20details" target="_blank" class="inline-flex items-center space-x-2 text-blue-600 font-bold hover:space-x-4 transition-all">
-                        <span>Learn More About Us</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                    </a>
+                </div>
+                <div class="reveal">
+                    <h2 class="text-amber-500 font-semibold tracking-widest uppercase mb-4">About Us</h2>
+                    <h3 class="text-4xl font-bold text-white mb-6 leading-tight">We build digital products that power modern businesses.</h3>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                        At Aurix Digital, we believe that great code is the foundation of every successful business in the 21st century. We don't just build websites or apps; we craft digital experiences that drive revenue, streamline operations, and engage users.
+                    </p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-3 text-slate-300">
+                            <i data-lucide="check-circle-2" class="text-amber-500 w-6 h-6"></i>
+                            Expert-led agile development processes
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-300">
+                            <i data-lucide="check-circle-2" class="text-amber-500 w-6 h-6"></i>
+                            User-centric design & strategy
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-300">
+                            <i data-lucide="check-circle-2" class="text-amber-500 w-6 h-6"></i>
+                            Scalable architecture for future growth
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-24 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-            <h2 class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">Our Expertise</h2>
-            <h3 class="text-4xl font-bold">Comprehensive Digital Solutions</h3>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Service 1 -->
-            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
-                    <i data-lucide="search" class="text-blue-600 w-8 h-8"></i>
-                </div>
-                <h4 class="text-xl font-bold mb-4">Search Engine Optimization</h4>
-                <p class="text-slate-600">Rank higher on search engines and attract organic traffic that converts into loyal customers.</p>
-            </div>
-            <!-- Service 2 -->
-            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
-                    <i data-lucide="share-2" class="text-blue-600 w-8 h-8"></i>
-                </div>
-                <h4 class="text-xl font-bold mb-4">Social Media Marketing</h4>
-                <p class="text-slate-600">Build a vibrant community around your brand across all major social media platforms.</p>
-            </div>
-            <!-- Service 3 -->
-            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover" data-aos="fade-up" data-aos-delay="300">
-                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
-                    <i data-lucide="mouse-pointer" class="text-blue-600 w-8 h-8"></i>
-                </div>
-                <h4 class="text-xl font-bold mb-4">PPC Advertising</h4>
-                <p class="text-slate-600">Get instant results with highly targeted paid campaigns on Google and Social Media.</p>
-            </div>
-            <!-- Service 4 -->
-            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover" data-aos="fade-up" data-aos-delay="400">
-                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
-                    <i data-lucide="pen-tool" class="text-blue-600 w-8 h-8"></i>
-                </div>
-                <h4 class="text-xl font-bold mb-4">Content Marketing</h4>
-                <p class="text-slate-600">Engage your audience with high-quality content that establishes your authority in the niche.</p>
-            </div>
-            <!-- Service 5 -->
-            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover" data-aos="fade-up" data-aos-delay="500">
-                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
-                    <i data-lucide="layout" class="text-blue-600 w-8 h-8"></i>
-                </div>
-                <h4 class="text-xl font-bold mb-4">Web Development</h4>
-                <p class="text-slate-600">Modern, responsive, and high-converting websites designed to showcase your brand perfectly.</p>
-            </div>
-            <!-- Service 6 -->
-            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover" data-aos="fade-up" data-aos-delay="600">
-                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
-                    <i data-lucide="bar-chart-3" class="text-blue-600 w-8 h-8"></i>
-                </div>
-                <h4 class="text-xl font-bold mb-4">Analytics & Strategy</h4>
-                <p class="text-slate-600">Data-driven insights to optimize your marketing performance and ROI.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Showcase Section -->
-    <section id="showcase" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-            <h2 class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">Our Work</h2>
-            <h3 class="text-4xl font-bold">Recent Projects</h3>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="group relative overflow-hidden rounded-3xl" data-aos="zoom-in">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" alt="Work 1" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-                <div class="absolute inset-0 bg-blue-600/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p class="text-blue-100 text-sm font-semibold uppercase">Branding</p>
-                    <h4 class="text-white text-xl font-bold">Tech Innovators Campaign</h4>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-3xl" data-aos="zoom-in" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800" alt="Work 2" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-                <div class="absolute inset-0 bg-blue-600/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p class="text-blue-100 text-sm font-semibold uppercase">E-Commerce</p>
-                    <h4 class="text-white text-xl font-bold">Fashion Hub SEO</h4>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-3xl" data-aos="zoom-in" data-aos-delay="200">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" alt="Work 3" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-                <div class="absolute inset-0 bg-blue-600/80 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p class="text-blue-100 text-sm font-semibold uppercase">Social Media</p>
-                    <h4 class="text-white text-xl font-bold">Lifestyle Brand Growth</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-slate-50">
+    <section id="services" class="py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-[40px] shadow-2xl overflow-hidden">
-                <div class="grid lg:grid-cols-2">
-                    <div class="p-12 lg:p-20 bg-blue-gradient text-white">
-                        <h3 class="text-4xl font-bold mb-8">Let's Talk Business</h3>
-                        <p class="text-blue-100 mb-12">Ready to take your brand to the next level? Reach out to us and let's discuss how we can help you achieve your digital goals.</p>
-                        
-                        <div class="space-y-8">
-                            <div class="flex items-center space-x-6">
-                                <div class="bg-white/10 p-4 rounded-2xl">
-                                    <i data-lucide="mail" class="w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <p class="text-blue-200 text-sm">Email Us</p>
-                                    <p class="text-xl font-semibold">metercotton@gmail.com</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-6">
-                                <div class="bg-white/10 p-4 rounded-2xl">
-                                    <i data-lucide="phone" class="w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <p class="text-blue-200 text-sm">Call/WhatsApp</p>
-                                    <p class="text-xl font-semibold">07012619446</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-6">
-                                <div class="bg-white/10 p-4 rounded-2xl">
-                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <p class="text-blue-200 text-sm">Our Office</p>
-                                    <p class="text-xl font-semibold">Trinity line, Ollur</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-16 flex space-x-4">
-                            <a href="#" class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                            <a href="#" class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                            <a href="#" class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-all"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div class="p-12 lg:p-20">
-                        <form class="space-y-6">
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
-                                    <input type="text" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all" placeholder="John Doe">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
-                                    <input type="email" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all" placeholder="john@example.com">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-2">Subject</label>
-                                <input type="text" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all" placeholder="Inquiry about Services">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-2">Message</label>
-                                <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all" placeholder="Tell us about your project..."></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200">Send Message</button>
-                        </form>
-                    </div>
-                </div>
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-amber-500 font-semibold tracking-widest uppercase mb-4">Our Core Services</h2>
+                <h3 class="text-4xl font-bold text-white mb-4">Tailored Solutions for Every Need</h3>
+                <div class="w-20 h-1 bg-amber-500 mx-auto"></div>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-white pt-20 pb-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                <div class="col-span-1 lg:col-span-1">
-                    <div class="flex items-center space-x-2 mb-6">
-                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                            <i data-lucide="layers" class="text-white w-6 h-6"></i>
-                        </div>
-                        <span class="text-2xl font-bold tracking-tight uppercase">aurix <span class="text-blue-600">digital</span></span>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card reveal bg-slate-900 p-8 rounded-3xl border border-slate-800 transition-all duration-300">
+                    <div class="w-14 h-14 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="layout" class="text-amber-500 w-8 h-8"></i>
                     </div>
-                    <p class="text-slate-400 mb-8">
-                        Empowering brands in the digital age with creative excellence and strategic precision.
-                    </p>
-                    <a href="https://wa.me/2347012619446?text=can%20I%20know%20more%20details" class="flex items-center space-x-3 bg-green-600 hover:bg-green-700 px-6 py-3 rounded-xl transition-all w-fit">
-                        <i data-lucide="message-circle" class="w-5 h-5"></i>
-                        <span class="font-bold">WhatsApp Us</span>
-                    </a>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
-                    <ul class="space-y-4 text-slate-400">
-                        <li><a href="#home" class="hover:text-blue-600 transition-all">Home</a></li>
-                        <li><a href="#about" class="hover:text-blue-600 transition-all">About Us</a></li>
-                        <li><a href="#services" class="hover:text-blue-600 transition-all">Our Services</a></li>
-                        <li><a href="#showcase" class="hover:text-blue-600 transition-all">Portfolio</a></li>
+                    <h4 class="text-2xl font-bold text-white mb-4">Web Development</h4>
+                    <p class="text-slate-400 mb-6">High-performance, responsive websites built with modern frameworks to ensure speed, security, and scalability.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>• Custom Web Applications</li>
+                        <li>• E-commerce Solutions</li>
+                        <li>• CMS Integration</li>
                     </ul>
                 </div>
 
-                <div>
-                    <h4 class="text-lg font-bold mb-6">Services</h4>
-                    <ul class="space-y-4 text-slate-400">
-                        <li><a href="#" class="hover:text-blue-600 transition-all">SEO Optimization</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition-all">Content Strategy</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition-all">Web Design</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition-all">Social Marketing</a></li>
+                <!-- Service 2 -->
+                <div class="service-card reveal delay-100 bg-slate-900 p-8 rounded-3xl border border-slate-800 transition-all duration-300">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="smartphone" class="text-blue-500 w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-4">Mobile Apps</h4>
+                    <p class="text-slate-400 mb-6">Native and cross-platform mobile applications that provide seamless user experiences across iOS and Android.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>• iOS & Android Development</li>
+                        <li>• React Native Experts</li>
+                        <li>• App Store Optimization</li>
                     </ul>
                 </div>
 
-                <div>
-                    <h4 class="text-lg font-bold mb-6">Newsletter</h4>
-                    <p class="text-slate-400 mb-4">Subscribe for digital insights.</p>
-                    <div class="flex">
-                        <input type="email" placeholder="Email" class="bg-slate-800 border-none rounded-l-xl px-4 py-3 w-full focus:ring-2 focus:ring-blue-600 outline-none">
-                        <button class="bg-blue-600 px-4 rounded-r-xl hover:bg-blue-700 transition-all">
-                            <i data-lucide="send" class="w-5 h-5"></i>
-                        </button>
+                <!-- Service 3 -->
+                <div class="service-card reveal delay-200 bg-slate-900 p-8 rounded-3xl border border-slate-800 transition-all duration-300">
+                    <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="layers" class="text-purple-500 w-8 h-8"></i>
                     </div>
+                    <h4 class="text-2xl font-bold text-white mb-4">UI/UX Design</h4>
+                    <p class="text-slate-400 mb-6">Intuitive and visually stunning interfaces designed with the user journey at the heart of every decision.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>• User Research & Persona</li>
+                        <li>• Wireframing & Prototyping</li>
+                        <li>• Visual Identity Design</li>
+                    </ul>
                 </div>
-            </div>
-            
-            <div class="border-t border-slate-800 pt-8 flex flex-col md:row justify-between items-center">
-                <p class="text-slate-500 text-sm">© 2023 Aurix Digital. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="text-slate-500 hover:text-white text-sm">Privacy Policy</a>
-                    <a href="#" class="text-slate-500 hover:text-white text-sm">Terms of Service</a>
+
+                <!-- Service 4 -->
+                <div class="service-card reveal bg-slate-900 p-8 rounded-3xl border border-slate-800 transition-all duration-300">
+                    <div class="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="trending-up" class="text-green-500 w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-4">Digital Marketing</h4>
+                    <p class="text-slate-400 mb-6">Data-driven marketing strategies that boost your online presence and convert visitors into loyal customers.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>• SEO & SEM</li>
+                        <li>• Content Strategy</li>
+                        <li>• Social Media Management</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card reveal delay-100 bg-slate-900 p-8 rounded-3xl border border-slate-800 transition-all duration-300">
+                    <div class="w-14 h-14 bg-red-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="shield-check" class="text-red-500 w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-4">Cyber Security</h4>
+                    <p class="text-slate-400 mb-6">Protecting your digital assets with advanced security audits and robust infrastructure implementation.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>• Security Audits</li>
+                        <li>• Data Encryption</li>
+                        <li>• Compliance Management</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card reveal delay-200 bg-slate-900 p-8 rounded-3xl border border-slate-800 transition-all duration-300">
+                    <div class="w-14 h-14 bg-orange-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="cloud" class="text-orange-500 w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-4">Cloud Solutions</h4>
+                    <p class="text-slate-400 mb-6">Modernizing your infrastructure with scalable cloud services on AWS, Azure, or Google Cloud Platform.</p>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>• Cloud Migration</li>
+                        <li>• Serverless Architecture</li>
+                        <li>• DevOps Automation</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
+    <!-- Portfolio/Showcase Section -->
+    <section id="portfolio" class="py-24 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 reveal">
+                <div>
+                    <h2 class="text-amber-500 font-semibold tracking-widest uppercase mb-4">Our Portfolio</h2>
+                    <h3 class="text-4xl font-bold text-white">Featured Projects</h3>
+                </div>
+                <p class="text-slate-400 max-w-md mt-4 md:mt-0">
+                    A glimpse into the digital transformations we've spearheaded for our global clients.
+                </p>
+            </div>
 
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
-
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu on link click
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // Sticky Nav Shadow on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('shadow-md');
-            } else {
-                nav.classList.remove('shadow-md');
-            }
-        });
-    </script>
-</body>
-</html>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: Aethel Car Rentals -->
+                <div class="group relative overflow-hidden rounded-3xl bg-slate-900 reveal border border-slate-800">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800" alt="Car Rental Project" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRQBAwQEBQQFCQUFCRQNCw0UFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFP/AABEIAFMAyAMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQ4BAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/xAC1oa8BAREDBCYHBgYDAf8AAQECAwQFBgcICQoL/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXp7fH19f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319f319
