@@ -3,973 +3,403 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE DRAPE CULTURE | Sarees for every story</title>
-    <meta name="description" content="Exquisite saree collections for every occasion. Traditional, contemporary, and designer drapes.">
-    
-    <!-- Tailwind CSS -->
+    <title>THE DRAPE CULTURE | Sarees for Every Story</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Alpine.js for interactive components -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#5D101D', // Deep Maroon
+                        primary: '#4A0E0E', // Deep Burgundy
                         secondary: '#D4AF37', // Gold
-                        accent: '#FDFBF7', // Ivory/Off-white
-                        dark: '#1A1A1A'
+                        accent: '#FDFBF7', // Off-white/Cream
                     },
                     fontFamily: {
-                        poppins: ['Poppins', 'sans-serif'],
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
                     },
                     animation: {
                         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                        'reveal': 'reveal 1s ease-out forwards',
+                        'reveal': 'reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards',
                     },
                     keyframes: {
                         fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         },
                         reveal: {
-                            '0%': { opacity: '0', clipPath: 'inset(0 100% 0 0)' },
-                            '100%': { opacity: '1', clipPath: 'inset(0 0 0 0)' },
+                            '0%': { transform: 'scaleX(0)', transformOrigin: 'left' },
+                            '100%': { transform: 'scaleX(1)', transformOrigin: 'left' },
                         }
                     }
                 }
             }
         }
     </script>
-
     <style>
-        [x-cloak] { display: none !important; }
-        .reveal-on-scroll { opacity: 0; }
-        .reveal-on-scroll.visible { animation: fadeInUp 0.8s ease-out forwards; }
-        
-        .saree-card:hover .saree-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .saree-overlay {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.4s ease;
-        }
         .glass-nav {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .saree-pattern {
+            background-image: radial-gradient(#D4AF37 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hover-gold:hover {
+            color: #D4AF37;
+            transition: color 0.3s ease;
         }
     </style>
 </head>
-<body class="font-poppins bg-accent text-dark overflow-x-hidden">
+<body class="bg-accent text-gray-800 font-sans overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav x-data="{ mobileMenu: false, scrolled: false }" 
-         @scroll.window="scrolled = (window.pageYOffset > 20)"
-         :class="scrolled ? 'glass-nav py-3 shadow-sm' : 'bg-transparent py-6'"
-         class="fixed w-full z-50 transition-all duration-300 px-6 lg:px-16">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2">
-                <!-- Placeholder for Logo -->
-                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-secondary font-bold text-xl">DC</div>
-                <span class="text-xl font-bold tracking-tighter text-primary">THE DRAPE <span class="text-secondary">CULTURE</span></span>
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-nav py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="flex flex-col">
+                <span class="text-2xl font-serif font-bold tracking-widest text-primary leading-none">THE DRAPE CULTURE</span>
+                <span class="text-[10px] uppercase tracking-[0.3em] text-secondary mt-1">Sarees for every story</span>
             </a>
-
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest">
-                <a href="#home" class="hover:text-secondary transition-colors">Home</a>
-                <a href="#about" class="hover:text-secondary transition-colors">About</a>
-                <a href="#collections" class="hover:text-secondary transition-colors">Collections</a>
-                <a href="#gallery" class="hover:text-secondary transition-colors">Gallery</a>
-                <a href="#contact" class="hover:text-secondary transition-colors">Contact</a>
+            
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium uppercase tracking-wider">
+                <a href="#home" class="hover-gold">Home</a>
+                <a href="#about" class="hover-gold">Our Story</a>
+                <a href="#services" class="hover-gold">Services</a>
+                <a href="#gallery" class="hover-gold">Collections</a>
+                <a href="#contact" class="hover-gold">Contact</a>
+                <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-all">Enquire</a>
             </div>
 
-            <div class="hidden md:flex items-center gap-4">
-                <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" target="_blank" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-all flex items-center gap-2 text-sm">
-                    <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
-                </a>
-            </div>
-
-            <!-- Mobile Toggle -->
-            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-primary">
-                <i data-lucide="menu" x-show="!mobileMenu"></i>
-                <i data-lucide="x" x-show="mobileMenu"></i>
+            <button class="md:hidden text-primary" id="mobileMenuBtn">
+                <i data-lucide="menu"></i>
             </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div x-show="mobileMenu" 
-             x-transition:enter="transition ease-out duration-200"
-             x-transition:enter-start="opacity-0 -translate-y-4"
-             x-transition:enter-end="opacity-100 translate-y-0"
-             x-cloak 
-             class="absolute top-full left-0 w-full bg-white shadow-xl py-6 px-6 flex flex-col gap-4 md:hidden">
-            <a @click="mobileMenu = false" href="#home" class="text-lg font-medium">Home</a>
-            <a @click="mobileMenu = false" href="#about" class="text-lg font-medium">About</a>
-            <a @click="mobileMenu = false" href="#collections" class="text-lg font-medium">Collections</a>
-            <a @click="mobileMenu = false" href="#gallery" class="text-lg font-medium">Gallery</a>
-            <a @click="mobileMenu = false" href="#contact" class="text-lg font-medium">Contact</a>
         </div>
     </nav>
 
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobileMenu" class="fixed inset-0 bg-primary z-[60] flex flex-col items-center justify-center text-white transform translate-x-full transition-transform duration-500">
+        <button class="absolute top-6 right-6" id="closeMenuBtn"><i data-lucide="x" class="w-8 h-8"></i></button>
+        <div class="flex flex-col space-y-8 text-2xl font-serif text-center">
+            <a href="#home" class="mobile-link">Home</a>
+            <a href="#about" class="mobile-link">Our Story</a>
+            <a href="#services" class="mobile-link">Services</a>
+            <a href="#gallery" class="mobile-link">Collections</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image -->
+    <section id="home" class="relative h-screen flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=2000" alt="Saree Background" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=2000" alt="Saree Hero" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-black/40"></div>
         </div>
-
-        <div class="relative z-10 text-center text-white px-6">
-            <h2 class="text-secondary font-medium tracking-[0.3em] uppercase mb-4 animate-fade-in-up">Handcrafted Elegance</h2>
-            <h1 class="text-5xl md:text-8xl font-bold mb-6 animate-fade-in-up" style="animation-delay: 0.2s;">THE DRAPE CULTURE</h1>
-            <p class="text-xl md:text-2xl font-light italic mb-10 animate-fade-in-up" style="animation-delay: 0.4s;">sarees for every story</p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center animate-fade-in-up" style="animation-delay: 0.6s;">
-                <a href="#collections" class="bg-secondary text-primary px-10 py-4 rounded-full font-bold hover:bg-white transition-all transform hover:scale-105">EXPLORE COLLECTIONS</a>
-                <a href="#contact" class="border border-white text-white px-10 py-4 rounded-full font-bold hover:bg-white hover:text-primary transition-all">GET IN TOUCH</a>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl text-white">
+                <h1 class="text-5xl md:text-8xl font-serif font-bold mb-6 animate-fade-in-up">
+                    Elegance <br> <span class="text-secondary italic">Redefined.</span>
+                </h1>
+                <p class="text-lg md:text-xl mb-8 opacity-90 max-w-xl font-light leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
+                    Discover a curated collection of artisanal sarees that weave together centuries of tradition with modern sophistication.
+                </p>
+                <div class="flex flex-wrap gap-4 animate-fade-in-up" style="animation-delay: 0.4s">
+                    <a href="#gallery" class="bg-secondary text-primary font-semibold px-8 py-4 rounded-sm hover:bg-white transition-colors duration-300">View Collections</a>
+                    <a href="#contact" class="border border-white text-white px-8 py-4 rounded-sm hover:bg-white hover:text-primary transition-colors duration-300">Visit Boutique</a>
+                </div>
             </div>
         </div>
-
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce">
-            <i data-lucide="chevron-down" class="w-8 h-8 opacity-50"></i>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="text-white w-8 h-8"></i>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 px-6 lg:px-16 bg-white overflow-hidden">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div class="reveal-on-scroll relative">
-                <div class="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-secondary"></div>
-                <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=800" alt="About Us" class="rounded-lg shadow-2xl">
-                <div class="absolute -bottom-10 -right-10 hidden lg:block w-64 h-64 bg-primary/10 -z-10 rounded-full"></div>
-            </div>
-            <div class="reveal-on-scroll">
-                <span class="text-secondary font-bold tracking-widest uppercase text-sm">Our Heritage</span>
-                <h2 class="text-4xl md:text-5xl font-bold text-primary mt-4 mb-6 leading-tight">Every Fold Tells a Different Tale</h2>
-                <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                    At THE DRAPE CULTURE, we believe that a saree is more than just six yards of fabric; it's a canvas of memories, a legacy of craftsmanship, and a celebration of womanhood. 
-                </p>
-                <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                    From the looms of traditional weavers to modern contemporary designs, we curate pieces that resonate with your personal style. Whether it's your wedding day or a casual evening, we have a story waiting for you to drape.
-                </p>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-primary">
-                            <i data-lucide="award"></i>
-                        </div>
-                        <span class="font-semibold">Premium Quality</span>
+    <section id="about" class="py-24 relative overflow-hidden">
+        <div class="saree-pattern absolute inset-0"></div>
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative reveal-on-scroll">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-secondary"></div>
+                    <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&q=80&w=800" alt="Craftsmanship" class="w-full h-[600px] object-cover rounded-sm shadow-2xl">
+                    <div class="absolute -bottom-8 -right-8 bg-primary p-8 text-white hidden md:block">
+                        <p class="text-3xl font-serif italic">Est. 2023</p>
+                        <p class="text-xs uppercase tracking-widest mt-2">Crafting Legacies</p>
                     </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-primary">
-                            <i data-lucide="feather"></i>
+                </div>
+                
+                <div class="reveal-on-scroll" style="transition-delay: 0.2s">
+                    <span class="text-secondary font-semibold tracking-widest uppercase text-sm mb-4 block">Our Story</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-primary mb-8 leading-tight">Every Saree Tells a Tale of Grace</h2>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        At THE DRAPE CULTURE, we believe a saree is more than just six yards of fabric; it's a heritage passed down through generations. Our boutique is born from a passion for preserving the intricate weaves of India while catering to the modern woman's aesthetic.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        Located in the heart of Ollur, we curate each piece with an eye for detail, from the finest Banarasi silks to the most delicate organzas. Our mission is to ensure that every woman finds her perfect story draped in our collection.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-2xl font-serif font-bold text-primary">500+</h4>
+                            <p class="text-sm text-gray-500 uppercase tracking-tighter">Unique Designs</p>
                         </div>
-                        <span class="font-semibold">Pure Fabrics</span>
+                        <div>
+                            <h4 class="text-2xl font-serif font-bold text-primary">100%</h4>
+                            <p class="text-sm text-gray-500 uppercase tracking-tighter">Handpicked Fabrics</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Collections Section -->
-    <section id="collections" class="py-24 bg-accent px-6 lg:px-16">
-        <div class="max-w-7xl mx-auto text-center mb-16 reveal-on-scroll">
-            <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4">Our Signature Collections</h2>
-            <div class="w-24 h-1 bg-secondary mx-auto"></div>
-            <p class="mt-6 text-gray-500 max-w-2xl mx-auto">Discover our handpicked categories designed for the modern woman who values tradition.</p>
-        </div>
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal-on-scroll">
+                <h2 class="text-4xl font-serif font-bold text-primary mb-4">Bespeak Services</h2>
+                <div class="h-1 w-20 bg-secondary mx-auto mb-6"></div>
+                <p class="text-gray-600">Beyond just selling sarees, we offer a complete ethnic experience tailored to your unique needs.</p>
+            </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Collection Item 1 -->
-            <div class="reveal-on-scroll group cursor-pointer">
-                <div class="relative overflow-hidden rounded-2xl h-[450px]">
-                    <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&q=80&w=800" alt="Silk Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-8">
-                        <h3 class="text-white text-2xl font-bold mb-2">The Silk Route</h3>
-                        <p class="text-gray-200 text-sm mb-4">Timeless Kanjeevarams and Banarasis for your most precious moments.</p>
-                        <a href="#" class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-4 transition-all">Explore <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="p-8 border border-gray-100 bg-accent hover:shadow-xl transition-all duration-300 group reveal-on-scroll">
+                    <div class="w-16 h-16 bg-white flex items-center justify-center rounded-full mb-6 group-hover:bg-primary transition-colors duration-300">
+                        <i data-lucide="scissors" class="text-secondary group-hover:text-white"></i>
                     </div>
+                    <h3 class="text-xl font-bold mb-4 text-primary">Bridal Consultations</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Personalized sessions to help you find the perfect ensemble for your big day, from engagement to reception.</p>
                 </div>
-            </div>
-            <!-- Collection Item 2 -->
-            <div class="reveal-on-scroll group cursor-pointer" style="animation-delay: 0.2s;">
-                <div class="relative overflow-hidden rounded-2xl h-[450px]">
-                    <img src="https://images.unsplash.com/photo-1583391733975-ac467946927d?auto=format&fit=crop&q=80&w=800" alt="Cotton Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-8">
-                        <h3 class="text-white text-2xl font-bold mb-2">Cotton Comforts</h3>
-                        <p class="text-gray-200 text-sm mb-4">Breathable, elegant, and perfect for the daily hustle.</p>
-                        <a href="#" class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-4 transition-all">Explore <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+
+                <!-- Service 2 -->
+                <div class="p-8 border border-gray-100 bg-accent hover:shadow-xl transition-all duration-300 group reveal-on-scroll" style="transition-delay: 0.2s">
+                    <div class="w-16 h-16 bg-white flex items-center justify-center rounded-full mb-6 group-hover:bg-primary transition-colors duration-300">
+                        <i data-lucide="palette" class="text-secondary group-hover:text-white"></i>
                     </div>
+                    <h3 class="text-xl font-bold mb-4 text-primary">Custom Draping</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Learn the art of different draping styles or visit us for professional draping services for your special events.</p>
                 </div>
-            </div>
-            <!-- Collection Item 3 -->
-            <div class="reveal-on-scroll group cursor-pointer" style="animation-delay: 0.4s;">
-                <div class="relative overflow-hidden rounded-2xl h-[450px]">
-                    <img src="https://images.unsplash.com/photo-1621340156942-d61361c77570?auto=format&fit=crop&q=80&w=800" alt="Designer Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-8">
-                        <h3 class="text-white text-2xl font-bold mb-2">Contemporary Drapes</h3>
-                        <p class="text-gray-200 text-sm mb-4">Modern silhouettes and experimental prints for the trendsetters.</p>
-                        <a href="#" class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-4 transition-all">Explore <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+
+                <!-- Service 3 -->
+                <div class="p-8 border border-gray-100 bg-accent hover:shadow-xl transition-all duration-300 group reveal-on-scroll" style="transition-delay: 0.4s">
+                    <div class="w-16 h-16 bg-white flex items-center justify-center rounded-full mb-6 group-hover:bg-primary transition-colors duration-300">
+                        <i data-lucide="truck" class="text-secondary group-hover:text-white"></i>
                     </div>
+                    <h3 class="text-xl font-bold mb-4 text-primary">Worldwide Shipping</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">No matter where you are, we bring the finest Indian drapes to your doorstep with secure global shipping.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Showcase Gallery Section -->
-    <section id="gallery" class="py-24 bg-white px-6 lg:px-16">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                <div class="reveal-on-scroll">
-                    <h2 class="text-4xl font-bold text-primary">The Showcase</h2>
-                    <p class="text-gray-500 mt-2">A glimpse into our latest arrivals and customer favorites.</p>
+    <!-- Showcase Gallery -->
+    <section id="gallery" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-12 reveal-on-scroll">
+                <div>
+                    <span class="text-secondary font-semibold tracking-widest uppercase text-sm mb-2 block">Curated Collections</span>
+                    <h2 class="text-4xl font-serif font-bold text-primary">Seasonal Highlights</h2>
                 </div>
-                <div class="reveal-on-scroll">
-                    <a href="#" class="text-primary font-bold border-b-2 border-secondary pb-1 hover:text-secondary transition-all">View Full Gallery</a>
-                </div>
+                <a href="#" class="text-primary font-semibold border-b-2 border-secondary pb-1 hidden md:block">View All Collections</a>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80">
-                    <img src="https://images.unsplash.com/photo-1610030469668-93530c176551?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Gallery 1">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
+                <div class="space-y-4">
+                    <div class="relative overflow-hidden group reveal-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1610030469668-93510cb6f18e?auto=format&fit=crop&q=80&w=600" alt="Saree 1" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white border border-white px-4 py-2">Quick View</span>
+                        </div>
+                    </div>
+                    <div class="relative overflow-hidden group reveal-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1583391733975-009695d8208a?auto=format&fit=crop&q=80&w=600" alt="Saree 2" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                 </div>
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80" style="animation-delay: 0.1s;">
-                    <img src="https://images.unsplash.com/photo-1595913296124-2b20e8384e0c?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Gallery 2">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
+                <div class="space-y-4 pt-8">
+                    <div class="relative overflow-hidden group reveal-on-scroll" style="transition-delay: 0.1s">
+                        <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&q=80&w=600" alt="Saree 3" class="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="relative overflow-hidden group reveal-on-scroll" style="transition-delay: 0.1s">
+                        <img src="https://images.unsplash.com/photo-1595914146118-3e1f4b8ad432?auto=format&fit=crop&q=80&w=600" alt="Saree 4" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                 </div>
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80" style="animation-delay: 0.2s;">
-                    <img src="https://images.unsplash.com/photo-1611644039989-3dddd0d0c734?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Gallery 3">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
+                <div class="space-y-4">
+                    <div class="relative overflow-hidden group reveal-on-scroll" style="transition-delay: 0.2s">
+                        <img src="https://images.unsplash.com/photo-1610030469915-958814991ca2?auto=format&fit=crop&q=80&w=600" alt="Saree 5" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="relative overflow-hidden group reveal-on-scroll" style="transition-delay: 0.2s">
+                        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=600" alt="Saree 6" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                 </div>
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80" style="animation-delay: 0.3s;">
-                    <img src="https://images.unsplash.com/photo-1625910513397-a401c4510042?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Gallery 4">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
+                <div class="space-y-4 pt-12">
+                    <div class="relative overflow-hidden group reveal-on-scroll" style="transition-delay: 0.3s">
+                        <img src="https://images.unsplash.com/photo-1617627143174-88775438f673?auto=format&fit=crop&q=80&w=600" alt="Saree 7" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="relative overflow-hidden group reveal-on-scroll" style="transition-delay: 0.3s">
+                        <img src="https://images.unsplash.com/photo-1610030469613-2d113470b89b?auto=format&fit=crop&q=80&w=600" alt="Saree 8" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                 </div>
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80 md:col-span-2" style="animation-delay: 0.4s;">
-                    <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover" alt="Gallery 5">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
-                    </div>
-                </div>
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80" style="animation-delay: 0.5s;">
-                    <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Gallery 6">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
-                    </div>
-                </div>
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80" style="animation-delay: 0.6s;">
-                    <img src="https://images.unsplash.com/photo-1595913296124-2b20e8384e0c?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Gallery 7">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonial Section -->
-    <section class="py-24 bg-primary text-white overflow-hidden relative">
-        <div class="absolute top-0 right-0 p-20 opacity-10">
-            <i data-lucide="quote" class="w-64 h-64"></i>
-        </div>
-        <div class="max-w-4xl mx-auto text-center px-6 relative z-10 reveal-on-scroll">
-            <div class="flex justify-center gap-1 text-secondary mb-8">
-                <i data-lucide="star" class="fill-current"></i>
-                <i data-lucide="star" class="fill-current"></i>
-                <i data-lucide="star" class="fill-current"></i>
-                <i data-lucide="star" class="fill-current"></i>
-                <i data-lucide="star" class="fill-current"></i>
-            </div>
-            <p class="text-2xl md:text-3xl italic font-light leading-relaxed mb-10">
-                "I wore a Drape Culture silk saree for my sister's wedding and I've never felt more elegant. The quality of the fabric and the intricate work is simply unmatched. It truly is a story in every drape!"
-            </p>
-            <div class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full bg-secondary mb-4 flex items-center justify-center font-bold text-primary">AR</div>
-                <h4 class="font-bold text-xl">Ananya Rao</h4>
-                <p class="text-secondary/80">Happy Client</p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-accent px-6 lg:px-16">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
-            <div class="reveal-on-scroll">
-                <h2 class="text-4xl font-bold text-primary mb-6">Visit Our Studio</h2>
-                <p class="text-gray-600 mb-10">Experience the fabrics in person. Our experts are here to help you find your perfect drape.</p>
-                
-                <div class="space-y-8">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary shrink-0">
-                            <i data-lucide="map-pin"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-lg">Address</h4>
-                            <p class="text-gray-500">Trinity line, Ollur</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary shrink-0">
-                            <i data-lucide="phone"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-lg">Phone / WhatsApp</h4>
-                            <p class="text-gray-500">07012619446</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary shrink-0">
-                            <i data-lucide="mail"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-lg">Email</h4>
-                            <p class="text-gray-500">metercotton@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Simple Map Placeholder -->
-                <div class="mt-12 rounded-2xl overflow-hidden h-64 bg-gray-200 border-4 border-white shadow-lg relative">
-                    <div class="absolute inset-0 flex items-center justify-center text-gray-400">
-                        <div class="text-center">
-                            <i data-lucide="map" class="w-12 h-12 mx-auto mb-2"></i>
-                            <p>Map View of Trinity line, Ollur</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="reveal-on-scroll bg-white p-8 md:p-12 rounded-3xl shadow-xl">
-                <h3 class="text-2xl font-bold text-primary mb-8">Send us a Message</h3>
-                <form class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Full Name</label>
-                            <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all" placeholder="Jane Doe">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Phone Number</label>
-                            <input type="tel" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all" placeholder="07012619446">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold mb-2">Message</label>
-                        <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all" placeholder="How can we help you today?"></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-dark transition-all shadow-lg hover:shadow-primary/20">SEND MESSAGE</button>
+    <section id="contact" class="py-24 bg-primary text-white relative overflow-hidden">
+        <div class="saree-pattern absolute inset-0 opacity-5"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div class="reveal-on-scroll">
+                    <h2 class="text-4xl font-serif font-bold mb-8">Visit Our Boutique</h2>
+                    <p class="text-accent/70 mb-12 max-w-md">Experience the textures and colors in person. Our doors are open for you to find your next story.</p>
                     
-                    <div class="text-center mt-6">
-                        <p class="text-gray-400 text-sm mb-4">Or reach out directly via</p>
-                        <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" class="inline-flex items-center gap-2 text-green-600 font-bold hover:underline">
-                            <i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp Us Now
-                        </a>
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-secondary/20 flex items-center justify-center rounded-full">
+                                <i data-lucide="map-pin" class="text-secondary"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">Address</p>
+                                <p class="text-accent/70">Trinity line, Ollur, Kerala</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-secondary/20 flex items-center justify-center rounded-full">
+                                <i data-lucide="mail" class="text-secondary"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">Email</p>
+                                <p class="text-accent/70">metercotton@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-secondary/20 flex items-center justify-center rounded-full">
+                                <i data-lucide="phone" class="text-secondary"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">Phone / WhatsApp</p>
+                                <p class="text-accent/70">07012619446</p>
+                            </div>
+                        </div>
                     </div>
-                </form>
+                </div>
+
+                <div class="bg-white p-8 md:p-12 rounded-sm shadow-2xl reveal-on-scroll" style="transition-delay: 0.2s">
+                    <h3 class="text-2xl font-serif font-bold text-primary mb-6">Send an Enquiry</h3>
+                    <form action="#" class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 bg-accent border border-gray-200 focus:border-secondary outline-none text-gray-800">
+                            <input type="email" placeholder="Email Address" class="w-full px-4 py-3 bg-accent border border-gray-200 focus:border-secondary outline-none text-gray-800">
+                        </div>
+                        <input type="text" placeholder="Subject" class="w-full px-4 py-3 bg-accent border border-gray-200 focus:border-secondary outline-none text-gray-800">
+                        <textarea rows="4" placeholder="Your Message" class="w-full px-4 py-3 bg-accent border border-gray-200 focus:border-secondary outline-none text-gray-800"></textarea>
+                        <button class="w-full bg-primary text-white py-4 font-bold uppercase tracking-widest hover:bg-secondary transition-colors duration-300">Submit Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white pt-20 pb-10 px-6 lg:px-16">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-16">
-            <div class="col-span-1 md:col-span-1">
-                <a href="#" class="flex items-center gap-2 mb-6">
-                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-secondary font-bold text-xl">DC</div>
-                    <span class="text-xl font-bold tracking-tighter text-white">THE DRAPE <span class="text-secondary">CULTURE</span></span>
-                </a>
-                <p class="text-gray-400 leading-relaxed mb-6 italic">
-                    "Sarees for every story." Celebrating the timeless elegance of the Indian drape.
-                </p>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all">
-                        <i data-lucide="facebook" class="w-5 h-5"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all">
-                        <i data-lucide="twitter" class="w-5 h-5"></i>
+    <footer class="bg-accent py-12 border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <a href="#" class="flex flex-col items-center md:items-start">
+                        <span class="text-2xl font-serif font-bold tracking-widest text-primary leading-none">THE DRAPE CULTURE</span>
+                        <span class="text-[10px] uppercase tracking-[0.3em] text-secondary mt-1">Sarees for every story</span>
                     </a>
                 </div>
-            </div>
+                
+                <div class="flex space-x-6 mb-8 md:mb-0">
+                    <a href="#" class="text-primary hover:text-secondary"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="text-primary hover:text-secondary"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="text-primary hover:text-secondary"><i data-lucide="twitter"></i></a>
+                </div>
 
-            <div>
-                <h4 class="font-bold text-lg mb-6 border-b border-gray-800 pb-2">Quick Links</h4>
-                <ul class="space-y-4 text-gray-400">
-                    <li><a href="#home" class="hover:text-secondary transition-colors">Home</a></li>
-                    <li><a href="#about" class="hover:text-secondary transition-colors">About Us</a></li>
-                    <li><a href="#collections" class="hover:text-secondary transition-colors">Collections</a></li>
-                    <li><a href="#gallery" class="hover:text-secondary transition-colors">Gallery</a></li>
-                </ul>
+                <div class="text-center md:text-right">
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">&copy; 2024 THE DRAPE CULTURE. All Rights Reserved.</p>
+                </div>
             </div>
-
-            <div>
-                <h4 class="font-bold text-lg mb-6 border-b border-gray-800 pb-2">Collections</h4>
-                <ul class="space-y-4 text-gray-400">
-                    <li><a href="#" class="hover:text-secondary transition-colors">Bridal Silks</a></li>
-                    <li><a href="#" class="hover:text-secondary transition-colors">Daily Cottons</a></li>
-                    <li><a href="#" class="hover:text-secondary transition-colors">Party Wear</a></li>
-                    <li><a href="#" class="hover:text-secondary transition-colors">Accessories</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="font-bold text-lg mb-6 border-b border-gray-800 pb-2">Newsletter</h4>
-                <p class="text-gray-400 mb-4 text-sm">Join our culture and get updates on new arrivals.</p>
-                <form class="flex">
-                    <input type="email" class="bg-gray-800 border-none rounded-l-lg px-4 py-2 w-full focus:ring-1 focus:ring-secondary outline-none" placeholder="Email Address">
-                    <button class="bg-secondary text-primary px-4 py-2 rounded-r-lg font-bold">JOIN</button>
-                </form>
-            </div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto pt-8 border-t border-gray-800 flex flex-col md:row justify-between items-center gap-4 text-gray-500 text-sm">
-            <p>&copy; 2023 THE DRAPE CULTURE. All rights reserved.</p>
-            <p>Handcrafted with love.</p>
         </div>
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" target="_blank" class="fixed bottom-8 right-8 bg-[#25D366] text-white p-4 rounded-full shadow-2xl z-40 hover:scale-110 transition-transform flex items-center justify-center">
-        <i data-lucide="message-circle" class="w-8 h-8"></i>
+    <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" class="fixed bottom-8 right-8 bg-[#25D366] text-white p-4 rounded-full shadow-2xl z-50 hover:scale-110 transition-transform duration-300">
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
     </a>
 
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Reveal on scroll logic
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2', 'shadow-md');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.remove('py-2', 'shadow-md');
+                nav.classList.add('py-4');
+            }
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+        });
+
+        const closeMenu = () => {
+            mobileMenu.classList.add('translate-x-full');
+        };
+
+        closeMenuBtn.addEventListener('click', closeMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+        // Reveal on Scroll Animation
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.1
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('active');
                 }
             });
         }, observerOptions);
 
         document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-
-        // Smooth Scroll handling for Safari
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
     </script>
 </body>
-</html><!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+</html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE DRAPE CULTURE | Sarees for every story</title>
-    <meta name="description" content="Exquisite saree collections for every occasion. Traditional, contemporary, and designer drapes.">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Alpine.js for interactive components -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#5D101D', // Deep Maroon
-                        secondary: '#D4AF37', // Gold
-                        accent: '#FDFBF7', // Ivory/Off-white
-                        dark: '#1A1A1A'
-                    },
-                    fontFamily: {
-                        poppins: ['Poppins', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                        'reveal': 'reveal 1s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        reveal: {
-                            '0%': { opacity: '0', clipPath: 'inset(0 100% 0 0)' },
-                            '100%': { opacity: '1', clipPath: 'inset(0 0 0 0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        [x-cloak] { display: none !important; }
-        .reveal-on-scroll { opacity: 0; }
-        .reveal-on-scroll.visible { animation: fadeInUp 0.8s ease-out forwards; }
-        
-        .saree-card:hover .saree-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .saree-overlay {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.4s ease;
-        }
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-        }
-    </style>
+    <title>Saree Store</title>
 </head>
-<body class="font-poppins bg-accent text-dark overflow-x-hidden">
-
-    <!-- Navigation -->
-    <nav x-data="{ mobileMenu: false, scrolled: false }" 
-         @scroll.window="scrolled = (window.pageYOffset > 20)"
-         :class="scrolled ? 'glass-nav py-3 shadow-sm' : 'bg-transparent py-6'"
-         class="fixed w-full z-50 transition-all duration-300 px-6 lg:px-16">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2">
-                <!-- Placeholder for Logo -->
-                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-secondary font-bold text-xl">DC</div>
-                <span class="text-xl font-bold tracking-tighter text-primary">THE DRAPE <span class="text-secondary">CULTURE</span></span>
-            </a>
-
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest">
-                <a href="#home" class="hover:text-secondary transition-colors">Home</a>
-                <a href="#about" class="hover:text-secondary transition-colors">About</a>
-                <a href="#collections" class="hover:text-secondary transition-colors">Collections</a>
-                <a href="#gallery" class="hover:text-secondary transition-colors">Gallery</a>
-                <a href="#contact" class="hover:text-secondary transition-colors">Contact</a>
-            </div>
-
-            <div class="hidden md:flex items-center gap-4">
-                <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" target="_blank" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-all flex items-center gap-2 text-sm">
-                    <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
-                </a>
-            </div>
-
-            <!-- Mobile Toggle -->
-            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-primary">
-                <i data-lucide="menu" x-show="!mobileMenu"></i>
-                <i data-lucide="x" x-show="mobileMenu"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div x-show="mobileMenu" 
-             x-transition:enter="transition ease-out duration-200"
-             x-transition:enter-start="opacity-0 -translate-y-4"
-             x-transition:enter-end="opacity-100 translate-y-0"
-             x-cloak 
-             class="absolute top-full left-0 w-full bg-white shadow-xl py-6 px-6 flex flex-col gap-4 md:hidden">
-            <a @click="mobileMenu = false" href="#home" class="text-lg font-medium">Home</a>
-            <a @click="mobileMenu = false" href="#about" class="text-lg font-medium">About</a>
-            <a @click="mobileMenu = false" href="#collections" class="text-lg font-medium">Collections</a>
-            <a @click="mobileMenu = false" href="#gallery" class="text-lg font-medium">Gallery</a>
-            <a @click="mobileMenu = false" href="#contact" class="text-lg font-medium">Contact</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=2000" alt="Saree Background" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black/40"></div>
-        </div>
-
-        <div class="relative z-10 text-center text-white px-6">
-            <h2 class="text-secondary font-medium tracking-[0.3em] uppercase mb-4 animate-fade-in-up">Handcrafted Elegance</h2>
-            <h1 class="text-5xl md:text-8xl font-bold mb-6 animate-fade-in-up" style="animation-delay: 0.2s;">THE DRAPE CULTURE</h1>
-            <p class="text-xl md:text-2xl font-light italic mb-10 animate-fade-in-up" style="animation-delay: 0.4s;">sarees for every story</p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center animate-fade-in-up" style="animation-delay: 0.6s;">
-                <a href="#collections" class="bg-secondary text-primary px-10 py-4 rounded-full font-bold hover:bg-white transition-all transform hover:scale-105">EXPLORE COLLECTIONS</a>
-                <a href="#contact" class="border border-white text-white px-10 py-4 rounded-full font-bold hover:bg-white hover:text-primary transition-all">GET IN TOUCH</a>
-            </div>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce">
-            <i data-lucide="chevron-down" class="w-8 h-8 opacity-50"></i>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-24 px-6 lg:px-16 bg-white overflow-hidden">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div class="reveal-on-scroll relative">
-                <div class="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-secondary"></div>
-                <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=800" alt="About Us" class="rounded-lg shadow-2xl">
-                <div class="absolute -bottom-10 -right-10 hidden lg:block w-64 h-64 bg-primary/10 -z-10 rounded-full"></div>
-            </div>
-            <div class="reveal-on-scroll">
-                <span class="text-secondary font-bold tracking-widest uppercase text-sm">Our Heritage</span>
-                <h2 class="text-4xl md:text-5xl font-bold text-primary mt-4 mb-6 leading-tight">Every Fold Tells a Different Tale</h2>
-                <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                    At THE DRAPE CULTURE, we believe that a saree is more than just six yards of fabric; it's a canvas of memories, a legacy of craftsmanship, and a celebration of womanhood. 
-                </p>
-                <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                    From the looms of traditional weavers to modern contemporary designs, we curate pieces that resonate with your personal style. Whether it's your wedding day or a casual evening, we have a story waiting for you to drape.
-                </p>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-primary">
-                            <i data-lucide="award"></i>
-                        </div>
-                        <span class="font-semibold">Premium Quality</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-primary">
-                            <i data-lucide="feather"></i>
-                        </div>
-                        <span class="font-semibold">Pure Fabrics</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Collections Section -->
-    <section id="collections" class="py-24 bg-accent px-6 lg:px-16">
-        <div class="max-w-7xl mx-auto text-center mb-16 reveal-on-scroll">
-            <h2 class="text-4xl md:text-5xl font-bold text-primary mb-4">Our Signature Collections</h2>
-            <div class="w-24 h-1 bg-secondary mx-auto"></div>
-            <p class="mt-6 text-gray-500 max-w-2xl mx-auto">Discover our handpicked categories designed for the modern woman who values tradition.</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Collection Item 1 -->
-            <div class="reveal-on-scroll group cursor-pointer">
-                <div class="relative overflow-hidden rounded-2xl h-[450px]">
-                    <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&q=80&w=800" alt="Silk Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-8">
-                        <h3 class="text-white text-2xl font-bold mb-2">The Silk Route</h3>
-                        <p class="text-gray-200 text-sm mb-4">Timeless Kanjeevarams and Banarasis for your most precious moments.</p>
-                        <a href="#" class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-4 transition-all">Explore <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Collection Item 2 -->
-            <div class="reveal-on-scroll group cursor-pointer" style="animation-delay: 0.2s;">
-                <div class="relative overflow-hidden rounded-2xl h-[450px]">
-                    <img src="https://images.unsplash.com/photo-1583391733975-ac467946927d?auto=format&fit=crop&q=80&w=800" alt="Cotton Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-8">
-                        <h3 class="text-white text-2xl font-bold mb-2">Cotton Comforts</h3>
-                        <p class="text-gray-200 text-sm mb-4">Breathable, elegant, and perfect for the daily hustle.</p>
-                        <a href="#" class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-4 transition-all">Explore <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Collection Item 3 -->
-            <div class="reveal-on-scroll group cursor-pointer" style="animation-delay: 0.4s;">
-                <div class="relative overflow-hidden rounded-2xl h-[450px]">
-                    <img src="https://images.unsplash.com/photo-1621340156942-d61361c77570?auto=format&fit=crop&q=80&w=800" alt="Designer Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-8">
-                        <h3 class="text-white text-2xl font-bold mb-2">Contemporary Drapes</h3>
-                        <p class="text-gray-200 text-sm mb-4">Modern silhouettes and experimental prints for the trendsetters.</p>
-                        <a href="#" class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-4 transition-all">Explore <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Showcase Gallery Section -->
-    <section id="gallery" class="py-24 bg-white px-6 lg:px-16">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                <div class="reveal-on-scroll">
-                    <h2 class="text-4xl font-bold text-primary">The Showcase</h2>
-                    <p class="text-gray-500 mt-2">A glimpse into our latest arrivals and customer favorites.</p>
-                </div>
-                <div class="reveal-on-scroll">
-                    <a href="#" class="text-primary font-bold border-b-2 border-secondary pb-1 hover:text-secondary transition-all">View Full Gallery</a>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80">
-                    <img src="https://images.unsplash.com/photo-1610030469668-93530c176551?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Gallery 1">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
-                    </div>
-                </div>
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80" style="animation-delay: 0.1s;">
-                    <img src="https://images.unsplash.com/photo-1595913296124-2b20e8384e0c?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Gallery 2">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
-                    </div>
-                </div>
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80" style="animation-delay: 0.2s;">
-                    <img src="https://images.unsplash.com/photo-1611644039989-3dddd0d0c734?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Gallery 3">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
-                    </div>
-                </div>
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80" style="animation-delay: 0.3s;">
-                    <img src="https://images.unsplash.com/photo-1625910513397-a401c4510042?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Gallery 4">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
-                    </div>
-                </div>
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80 md:col-span-2" style="animation-delay: 0.4s;">
-                    <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover" alt="Gallery 5">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
-                    </div>
-                </div>
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80" style="animation-delay: 0.5s;">
-                    <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Gallery 6">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
-                    </div>
-                </div>
-                <div class="reveal-on-scroll saree-card relative overflow-hidden rounded-xl h-80" style="animation-delay: 0.6s;">
-                    <img src="https://images.unsplash.com/photo-1595913296124-2b20e8384e0c?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Gallery 7">
-                    <div class="saree-overlay absolute inset-0 bg-black/40 flex items-center justify-center p-4">
-                        <button class="bg-white text-primary p-3 rounded-full"><i data-lucide="maximize-2"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonial Section -->
-    <section class="py-24 bg-primary text-white overflow-hidden relative">
-        <div class="absolute top-0 right-0 p-20 opacity-10">
-            <i data-lucide="quote" class="w-64 h-64"></i>
-        </div>
-        <div class="max-w-4xl mx-auto text-center px-6 relative z-10 reveal-on-scroll">
-            <div class="flex justify-center gap-1 text-secondary mb-8">
-                <i data-lucide="star" class="fill-current"></i>
-                <i data-lucide="star" class="fill-current"></i>
-                <i data-lucide="star" class="fill-current"></i>
-                <i data-lucide="star" class="fill-current"></i>
-                <i data-lucide="star" class="fill-current"></i>
-            </div>
-            <p class="text-2xl md:text-3xl italic font-light leading-relaxed mb-10">
-                "I wore a Drape Culture silk saree for my sister's wedding and I've never felt more elegant. The quality of the fabric and the intricate work is simply unmatched. It truly is a story in every drape!"
-            </p>
-            <div class="flex flex-col items-center">
-                <div class="w-16 h-16 rounded-full bg-secondary mb-4 flex items-center justify-center font-bold text-primary">AR</div>
-                <h4 class="font-bold text-xl">Ananya Rao</h4>
-                <p class="text-secondary/80">Happy Client</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-accent px-6 lg:px-16">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
-            <div class="reveal-on-scroll">
-                <h2 class="text-4xl font-bold text-primary mb-6">Visit Our Studio</h2>
-                <p class="text-gray-600 mb-10">Experience the fabrics in person. Our experts are here to help you find your perfect drape.</p>
-                
-                <div class="space-y-8">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary shrink-0">
-                            <i data-lucide="map-pin"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-lg">Address</h4>
-                            <p class="text-gray-500">Trinity line, Ollur</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary shrink-0">
-                            <i data-lucide="phone"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-lg">Phone / WhatsApp</h4>
-                            <p class="text-gray-500">07012619446</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-primary shrink-0">
-                            <i data-lucide="mail"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-lg">Email</h4>
-                            <p class="text-gray-500">metercotton@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Simple Map Placeholder -->
-                <div class="mt-12 rounded-2xl overflow-hidden h-64 bg-gray-200 border-4 border-white shadow-lg relative">
-                    <div class="absolute inset-0 flex items-center justify-center text-gray-400">
-                        <div class="text-center">
-                            <i data-lucide="map" class="w-12 h-12 mx-auto mb-2"></i>
-                            <p>Map View of Trinity line, Ollur</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="reveal-on-scroll bg-white p-8 md:p-12 rounded-3xl shadow-xl">
-                <h3 class="text-2xl font-bold text-primary mb-8">Send us a Message</h3>
-                <form class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Full Name</label>
-                            <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all" placeholder="Jane Doe">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Phone Number</label>
-                            <input type="tel" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all" placeholder="07012619446">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold mb-2">Message</label>
-                        <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all" placeholder="How can we help you today?"></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-dark transition-all shadow-lg hover:shadow-primary/20">SEND MESSAGE</button>
-                    
-                    <div class="text-center mt-6">
-                        <p class="text-gray-400 text-sm mb-4">Or reach out directly via</p>
-                        <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" class="inline-flex items-center gap-2 text-green-600 font-bold hover:underline">
-                            <i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp Us Now
-                        </a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white pt-20 pb-10 px-6 lg:px-16">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-16">
-            <div class="col-span-1 md:col-span-1">
-                <a href="#" class="flex items-center gap-2 mb-6">
-                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-secondary font-bold text-xl">DC</div>
-                    <span class="text-xl font-bold tracking-tighter text-white">THE DRAPE <span class="text-secondary">CULTURE</span></span>
-                </a>
-                <p class="text-gray-400 leading-relaxed mb-6 italic">
-                    "Sarees for every story." Celebrating the timeless elegance of the Indian drape.
-                </p>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all">
-                        <i data-lucide="facebook" class="w-5 h-5"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all">
-                        <i data-lucide="twitter" class="w-5 h-5"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div>
-                <h4 class="font-bold text-lg mb-6 border-b border-gray-800 pb-2">Quick Links</h4>
-                <ul class="space-y-4 text-gray-400">
-                    <li><a href="#home" class="hover:text-secondary transition-colors">Home</a></li>
-                    <li><a href="#about" class="hover:text-secondary transition-colors">About Us</a></li>
-                    <li><a href="#collections" class="hover:text-secondary transition-colors">Collections</a></li>
-                    <li><a href="#gallery" class="hover:text-secondary transition-colors">Gallery</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="font-bold text-lg mb-6 border-b border-gray-800 pb-2">Collections</h4>
-                <ul class="space-y-4 text-gray-400">
-                    <li><a href="#" class="hover:text-secondary transition-colors">Bridal Silks</a></li>
-                    <li><a href="#" class="hover:text-secondary transition-colors">Daily Cottons</a></li>
-                    <li><a href="#" class="hover:text-secondary transition-colors">Party Wear</a></li>
-                    <li><a href="#" class="hover:text-secondary transition-colors">Accessories</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="font-bold text-lg mb-6 border-b border-gray-800 pb-2">Newsletter</h4>
-                <p class="text-gray-400 mb-4 text-sm">Join our culture and get updates on new arrivals.</p>
-                <form class="flex">
-                    <input type="email" class="bg-gray-800 border-none rounded-l-lg px-4 py-2 w-full focus:ring-1 focus:ring-secondary outline-none" placeholder="Email Address">
-                    <button class="bg-secondary text-primary px-4 py-2 rounded-r-lg font-bold">JOIN</button>
-                </form>
-            </div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto pt-8 border-t border-gray-800 flex flex-col md:row justify-between items-center gap-4 text-gray-500 text-sm">
-            <p>&copy; 2023 THE DRAPE CULTURE. All rights reserved.</p>
-            <p>Handcrafted with love.</p>
-        </div>
-    </footer>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" target="_blank" class="fixed bottom-8 right-8 bg-[#25D366] text-white p-4 rounded-full shadow-2xl z-40 hover:scale-110 transition-transform flex items-center justify-center">
-        <i data-lucide="message-circle" class="w-8 h-8"></i>
-    </a>
-
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Reveal on scroll logic
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-
-        // Smooth Scroll handling for Safari
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+<body>
+    
 </body>
 </html>
