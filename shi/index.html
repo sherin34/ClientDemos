@@ -5,96 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shi | asdf</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#6366f1',
-                        secondary: '#4f46e5',
-                        dark: '#0f172a',
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
         .glass {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        .text-gradient {
+            background: linear-gradient(to right, #6366f1, #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hover-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.4);
         }
         .blob {
             position: absolute;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%);
             filter: blur(80px);
-            z-index: -1;
             border-radius: 50%;
+            z-index: -1;
         }
     </style>
 </head>
-<body class="bg-dark text-gray-100 font-sans selection:bg-primary selection:text-white">
+<body class="overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300 px-6 py-4" id="navbar">
-        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-8 py-4">
-            <a href="#" class="text-3xl font-bold tracking-tighter gradient-text">shi</a>
-            
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="#home" class="hover:text-primary transition-colors">Home</a>
-                <a href="#about" class="hover:text-primary transition-colors">About</a>
-                <a href="#services" class="hover:text-primary transition-colors">Services</a>
-                <a href="#gallery" class="hover:text-primary transition-colors">Showcase</a>
-                <a href="#contact" class="px-5 py-2 bg-primary hover:bg-secondary rounded-full transition-all text-sm font-medium">Contact Us</a>
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold tracking-tighter">shi<span class="text-indigo-500">.</span></a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+                <a href="#home" class="hover:text-indigo-400 transition-colors">Home</a>
+                <a href="#about" class="hover:text-indigo-400 transition-colors">About</a>
+                <a href="#services" class="hover:text-indigo-400 transition-colors">Services</a>
+                <a href="#showcase" class="hover:text-indigo-400 transition-colors">Showcase</a>
+                <a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a>
             </div>
-
-            <button class="md:hidden text-white">
-                <i data-lucide="menu"></i>
-            </button>
+            <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full text-sm font-semibold transition-all">Get Started</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div class="blob top-[-100px] right-[-100px]"></div>
-        <div class="blob bottom-[-100px] left-[-100px]"></div>
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="blob top-[-10%] left-[-10%]"></div>
+        <div class="blob bottom-[-10%] right-[-10%]"></div>
         
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right" data-aos-duration="1000">
-                <h2 class="text-primary font-semibold tracking-widest uppercase mb-4">asdf</h2>
-                <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-tight">
-                    Experience <br/><span class="gradient-text">shi</span>
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="reveal">
+                <span class="px-4 py-1 rounded-full border border-indigo-500/30 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-6 inline-block">Innovating Excellence</span>
+                <h1 class="text-6xl md:text-8xl font-extrabold mb-6 leading-tight">
+                    shi <br> <span class="text-gradient">asdf</span>
                 </h1>
-                <p class="text-gray-400 text-lg mb-8 max-w-lg">
-                    asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf.
+                <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Experience the next generation of asdf. We blend modern aesthetics with professional execution to deliver results that matter.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#contact" class="px-8 py-4 bg-primary rounded-xl font-semibold hover:scale-105 transition-transform flex items-center gap-2">
-                        Get Started <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                    </a>
-                    <a href="#gallery" class="px-8 py-4 border border-gray-700 rounded-xl font-semibold hover:bg-white/5 transition-colors">
-                        View Work
-                    </a>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                    <a href="#showcase" class="w-full md:w-auto px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-indigo-500 hover:text-white transition-all duration-300">View Showcase</a>
+                    <a href="#contact" class="w-full md:w-auto px-8 py-4 glass font-bold rounded-xl hover:bg-white/10 transition-all duration-300">Contact Us</a>
                 </div>
-            </div>
-            <div class="relative" data-aos="zoom-in" data-aos-duration="1200">
-                <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-white/10">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1000" alt="Hero" class="w-full h-full object-cover">
-                </div>
-                <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary rounded-full blur-3xl opacity-50"></div>
             </div>
         </div>
     </section>
@@ -103,26 +90,35 @@
     <section id="about" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="grid grid-cols-2 gap-4" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=500" class="rounded-2xl mt-8" alt="Team">
-                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=500" class="rounded-2xl" alt="Work">
+                <div class="reveal">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="About" class="rounded-2xl shadow-2xl">
+                        <div class="absolute -bottom-6 -right-6 glass p-6 rounded-2xl hidden md:block">
+                            <p class="text-3xl font-bold text-indigo-500">10+</p>
+                            <p class="text-xs text-gray-400 uppercase tracking-widest">Years Experience</p>
+                        </div>
+                    </div>
                 </div>
-                <div data-aos="fade-left">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">About Us</h2>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf.
+                <div class="reveal">
+                    <h2 class="text-4xl font-bold mb-6">About Us</h2>
+                    <p class="text-gray-400 text-lg mb-6 leading-relaxed">
+                        At shi, we believe in the power of asdf. Our journey started with a simple vision: to redefine how professional services are delivered in the modern world.
                     </p>
-                    <p class="text-gray-400 mb-8 leading-relaxed">
-                        asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf.
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        We are a team of dedicated professionals committed to excellence, innovation, and your success. Every project we undertake is a testament to our passion for quality.
                     </p>
                     <div class="grid grid-cols-2 gap-6">
-                        <div class="p-4 glass rounded-xl">
-                            <h4 class="text-2xl font-bold text-primary">100+</h4>
-                            <p class="text-sm text-gray-400">Projects asdf</p>
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2 bg-indigo-500/10 rounded-lg text-indigo-500">
+                                <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-medium">Modern Approach</span>
                         </div>
-                        <div class="p-4 glass rounded-xl">
-                            <h4 class="text-2xl font-bold text-primary">50+</h4>
-                            <p class="text-sm text-gray-400">Clients asdf</p>
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2 bg-indigo-500/10 rounded-lg text-indigo-500">
+                                <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-medium">Expert Team</span>
                         </div>
                     </div>
                 </div>
@@ -133,73 +129,79 @@
     <!-- Services Section -->
     <section id="services" class="py-24 bg-white/5">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-16 reveal">
                 <h2 class="text-4xl font-bold mb-4">Core Services</h2>
-                <p class="text-gray-400">asdf asdf asdf asdf asdf asdf asdf</p>
+                <div class="w-20 h-1 bg-indigo-500 mx-auto mb-6"></div>
+                <p class="text-gray-400 max-w-xl mx-auto">Discover how our specialized asdf solutions can transform your business landscape.</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="p-8 glass rounded-3xl hover:border-primary/50 transition-all group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
-                        <i data-lucide="layers" class="text-primary group-hover:text-white"></i>
+                <div class="reveal glass p-8 rounded-3xl hover-card transition-all duration-300">
+                    <div class="w-14 h-14 bg-indigo-500/20 rounded-2xl flex items-center justify-center text-indigo-400 mb-6">
+                        <i data-lucide="layers" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">asdf One</h3>
-                    <p class="text-gray-400">asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf.</p>
+                    <h3 class="text-xl font-bold mb-4">Strategic asdf</h3>
+                    <p class="text-gray-400 leading-relaxed mb-6">Tailored strategies designed to align with your specific goals and market demands.</p>
+                    <a href="#" class="text-indigo-400 font-semibold flex items-center hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i></a>
                 </div>
+
                 <!-- Service 2 -->
-                <div class="p-8 glass rounded-3xl hover:border-primary/50 transition-all group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
-                        <i data-lucide="zap" class="text-primary group-hover:text-white"></i>
+                <div class="reveal glass p-8 rounded-3xl hover-card transition-all duration-300" style="transition-delay: 0.1s">
+                    <div class="w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center text-purple-400 mb-6">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">asdf Two</h3>
-                    <p class="text-gray-400">asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf.</p>
+                    <h3 class="text-xl font-bold mb-4">Digital Excellence</h3>
+                    <p class="text-gray-400 leading-relaxed mb-6">Leveraging the latest technology to create seamless digital experiences for your users.</p>
+                    <a href="#" class="text-purple-400 font-semibold flex items-center hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i></a>
                 </div>
+
                 <!-- Service 3 -->
-                <div class="p-8 glass rounded-3xl hover:border-primary/50 transition-all group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
-                        <i data-lucide="monitor" class="text-primary group-hover:text-white"></i>
+                <div class="reveal glass p-8 rounded-3xl hover-card transition-all duration-300" style="transition-delay: 0.2s">
+                    <div class="w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400 mb-6">
+                        <i data-lucide="shield" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">asdf Three</h3>
-                    <p class="text-gray-400">asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf.</p>
+                    <h3 class="text-xl font-bold mb-4">Secure asdf</h3>
+                    <p class="text-gray-400 leading-relaxed mb-6">Comprehensive security and reliability built into every solution we provide.</p>
+                    <a href="#" class="text-blue-400 font-semibold flex items-center hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Showcase Section -->
-    <section id="gallery" class="py-24">
+    <section id="showcase" class="py-24">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-end mb-12">
-                <div data-aos="fade-right">
-                    <h2 class="text-4xl font-bold mb-2">Showcase</h2>
-                    <p class="text-gray-400">Our latest asdf projects</p>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                <div>
+                    <h2 class="text-4xl font-bold mb-4">Showcase</h2>
+                    <p class="text-gray-400">A collection of our finest asdf works.</p>
                 </div>
-                <div class="hidden md:block" data-aos="fade-left">
-                    <button class="px-6 py-2 border border-gray-700 rounded-full hover:bg-white/5 transition-colors">View All Gallery</button>
+                <div class="mt-6 md:mt-0">
+                    <button class="px-6 py-2 border border-white/20 rounded-full hover:bg-white/10 transition-all">View All Work</button>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="group relative overflow-hidden rounded-3xl" data-aos="zoom-in">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110" alt="Project">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
-                        <h4 class="text-xl font-bold">Project asdf</h4>
-                        <p class="text-sm text-gray-300">asdf description</p>
+                <div class="reveal group relative overflow-hidden rounded-2xl aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" alt="Project 1">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-indigo-400 text-sm font-bold mb-2">Web Design</p>
+                        <h4 class="text-2xl font-bold">Project Alpha</h4>
                     </div>
                 </div>
-                <div class="group relative overflow-hidden rounded-3xl" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110" alt="Project">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
-                        <h4 class="text-xl font-bold">Design asdf</h4>
-                        <p class="text-sm text-gray-300">asdf description</p>
+                <div class="reveal group relative overflow-hidden rounded-2xl aspect-[4/5]" style="transition-delay: 0.1s">
+                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" alt="Project 2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-indigo-400 text-sm font-bold mb-2">Branding</p>
+                        <h4 class="text-2xl font-bold">Minimal Concept</h4>
                     </div>
                 </div>
-                <div class="group relative overflow-hidden rounded-3xl" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110" alt="Project">
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
-                        <h4 class="text-xl font-bold">Digital asdf</h4>
-                        <p class="text-sm text-gray-300">asdf description</p>
+                <div class="reveal group relative overflow-hidden rounded-2xl aspect-[4/5]" style="transition-delay: 0.2s">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" alt="Project 3">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-indigo-400 text-sm font-bold mb-2">Development</p>
+                        <h4 class="text-2xl font-bold">Tech Stack V2</h4>
                     </div>
                 </div>
             </div>
@@ -209,71 +211,59 @@
     <!-- Contact Section -->
     <section id="contact" class="py-24 bg-white/5">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16">
-                <div data-aos="fade-right">
-                    <h2 class="text-4xl font-bold mb-6">Get in Touch</h2>
-                    <p class="text-gray-400 mb-10">Have a question or want to work together? Let's talk about your asdf needs.</p>
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <h2 class="text-4xl font-bold mb-6">Get In Touch</h2>
+                    <p class="text-gray-400 mb-10">Have a project in mind or just want to say hello? Drop us a message and we'll get back to you as soon as possible.</p>
                     
                     <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
-                                <i data-lucide="mail" class="text-primary"></i>
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-indigo-500/10 rounded-xl text-indigo-500">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-400">Email us</p>
-                                <a href="mailto:sherinjojucoc@gmail.com" class="text-lg font-medium hover:text-primary transition-colors">sherinjojucoc@gmail.com</a>
+                                <h4 class="font-bold">Email Us</h4>
+                                <p class="text-gray-400">sherinjojucoc@gmail.com</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
-                                <i data-lucide="phone" class="text-primary"></i>
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-indigo-500/10 rounded-xl text-indigo-500">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-400">Call/WhatsApp</p>
-                                <a href="tel:7012619446" class="text-lg font-medium hover:text-primary transition-colors">7012619446</a>
+                                <h4 class="font-bold">Call Us</h4>
+                                <p class="text-gray-400">7012619446</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
-                                <i data-lucide="map-pin" class="text-primary"></i>
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-indigo-500/10 rounded-xl text-indigo-500">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-400">Office</p>
-                                <p class="text-lg font-medium">asdf, Address Location</p>
+                                <h4 class="font-bold">Location</h4>
+                                <p class="text-gray-400">asdf</p>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="mt-10">
-                        <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 rounded-xl font-semibold transition-colors">
-                            <i data-lucide="message-circle"></i> WhatsApp Now
-                        </a>
                     </div>
                 </div>
 
-                <div class="glass p-8 rounded-3xl" data-aos="fade-left">
+                <div class="reveal glass p-8 rounded-3xl">
                     <form class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-medium text-gray-400 mb-2">Name</label>
-                                <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors" placeholder="John Doe">
+                                <label class="block text-sm font-medium mb-2">Name</label>
+                                <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition-all" placeholder="John Doe">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
-                                <input type="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors" placeholder="john@example.com">
+                                <label class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition-all" placeholder="john@example.com">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Subject</label>
-                            <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors" placeholder="Service Inquiry">
+                            <label class="block text-sm font-medium mb-2">Message</label>
+                            <textarea rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition-all" placeholder="Tell us about your project..."></textarea>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Message</label>
-                            <textarea rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors" placeholder="Your message here..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-4 bg-primary hover:bg-secondary rounded-xl font-bold transition-all transform hover:scale-[1.02]">
-                            Send Message
-                        </button>
+                        <button type="submit" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-indigo-500/20">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -283,56 +273,55 @@
     <!-- Footer -->
     <footer class="py-12 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div>
-                    <a href="#" class="text-3xl font-bold tracking-tighter gradient-text">shi</a>
-                    <p class="text-gray-400 mt-2">asdf - Modern solutions for your business.</p>
-                </div>
-                
-                <div class="flex gap-6">
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                        <i data-lucide="twitter" class="w-5 h-5"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                        <i data-lucide="facebook" class="w-5 h-5"></i>
-                    </a>
+            <div class="flex flex-col md:flex-row justify-between items-center mb-10">
+                <a href="#" class="text-3xl font-extrabold mb-6 md:mb-0">shi<span class="text-indigo-500">.</span></a>
+                <div class="flex space-x-6">
+                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-indigo-500 transition-all"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-indigo-500 transition-all"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-indigo-500 transition-all"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
                 </div>
             </div>
-            <hr class="my-8 border-white/5">
-            <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-                <p>&copy; 2023 shi. All rights reserved.</p>
-                <div class="flex gap-8 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                </div>
+            <div class="text-center text-gray-500 text-sm">
+                <p>&copy; 2023 shi. All rights reserved. Built with passion and asdf.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" class="fixed bottom-8 right-8 w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform z-50">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+    </a>
+
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
         });
 
-        // Navbar scroll effect
+        // Smooth Navbar Background Change
         window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
+            const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
-                nav.classList.add('bg-dark/80', 'backdrop-blur-md', 'py-2');
-                nav.classList.remove('py-4');
+                nav.classList.add('py-3');
+                nav.style.background = 'rgba(10, 10, 10, 0.8)';
             } else {
-                nav.classList.remove('bg-dark/80', 'backdrop-blur-md', 'py-2');
-                nav.classList.add('py-4');
+                nav.classList.remove('py-3');
+                nav.style.background = 'rgba(255, 255, 255, 0.03)';
             }
         });
     </script>
