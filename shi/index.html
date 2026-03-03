@@ -3,25 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shi | asdf</title>
+    <title>shi - asdf</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #0a0a0a;
-            color: #ffffff;
+            background-color: #0f172a;
+            color: #f8fafc;
         }
         .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .text-gradient {
-            background: linear-gradient(to right, #6366f1, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         .reveal {
             opacity: 0;
@@ -32,93 +27,81 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .hover-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(99, 102, 241, 0.4);
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%);
-            filter: blur(80px);
-            border-radius: 50%;
-            z-index: -1;
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #60a5fa;
         }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
+    <nav class="fixed w-full z-50 glass top-0">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-extrabold tracking-tighter">shi<span class="text-indigo-500">.</span></a>
-            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
-                <a href="#home" class="hover:text-indigo-400 transition-colors">Home</a>
-                <a href="#about" class="hover:text-indigo-400 transition-colors">About</a>
-                <a href="#services" class="hover:text-indigo-400 transition-colors">Services</a>
-                <a href="#showcase" class="hover:text-indigo-400 transition-colors">Showcase</a>
-                <a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a>
+            <div class="text-3xl font-bold tracking-tighter gradient-text">shi</div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest">
+                <a href="#home" class="hover:text-blue-400 transition">Home</a>
+                <a href="#about" class="hover:text-blue-400 transition">About</a>
+                <a href="#services" class="hover:text-blue-400 transition">Services</a>
+                <a href="#showcase" class="hover:text-blue-400 transition">Showcase</a>
+                <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
             </div>
-            <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full text-sm font-semibold transition-all">Get Started</a>
+            <button class="md:hidden text-white">
+                <i data-lucide="menu"></i>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <div class="blob top-[-10%] left-[-10%]"></div>
-        <div class="blob bottom-[-10%] right-[-10%]"></div>
+    <section id="home" class="min-h-screen flex items-center justify-center relative pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] animate-pulse"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] animate-pulse delay-700"></div>
+        </div>
         
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <div class="reveal">
-                <span class="px-4 py-1 rounded-full border border-indigo-500/30 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-6 inline-block">Innovating Excellence</span>
-                <h1 class="text-6xl md:text-8xl font-extrabold mb-6 leading-tight">
-                    shi <br> <span class="text-gradient">asdf</span>
-                </h1>
-                <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Experience the next generation of asdf. We blend modern aesthetics with professional execution to deliver results that matter.
-                </p>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-4">
-                    <a href="#showcase" class="w-full md:w-auto px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-indigo-500 hover:text-white transition-all duration-300">View Showcase</a>
-                    <a href="#contact" class="w-full md:w-auto px-8 py-4 glass font-bold rounded-xl hover:bg-white/10 transition-all duration-300">Contact Us</a>
-                </div>
+        <div class="relative z-10 text-center px-6 max-w-4xl">
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-tight reveal">
+                Elevating your <span class="gradient-text">asdf</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-400 mb-10 reveal delay-100">
+                asdf
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center reveal delay-200">
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105">
+                    Get Started
+                </a>
+                <a href="#services" class="glass px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-all transform hover:scale-105">
+                    Our Services
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- About Us -->
+    <section id="about" class="py-24 px-6 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="reveal">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="About" class="rounded-2xl shadow-2xl">
-                        <div class="absolute -bottom-6 -right-6 glass p-6 rounded-2xl hidden md:block">
-                            <p class="text-3xl font-bold text-indigo-500">10+</p>
-                            <p class="text-xs text-gray-400 uppercase tracking-widest">Years Experience</p>
-                        </div>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000" alt="About" class="rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition duration-700">
                 </div>
-                <div class="reveal">
-                    <h2 class="text-4xl font-bold mb-6">About Us</h2>
-                    <p class="text-gray-400 text-lg mb-6 leading-relaxed">
-                        At shi, we believe in the power of asdf. Our journey started with a simple vision: to redefine how professional services are delivered in the modern world.
-                    </p>
-                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
-                        We are a team of dedicated professionals committed to excellence, innovation, and your success. Every project we undertake is a testament to our passion for quality.
+                <div class="reveal delay-200">
+                    <h2 class="text-4xl font-bold mb-6">About <span class="gradient-text">shi</span></h2>
+                    <p class="text-slate-400 text-lg leading-relaxed mb-8">
+                        asdf. We are committed to providing exceptional quality and innovative solutions tailored to your specific needs. Our team focuses on excellence, ensuring that every project reflects our dedication to the craft of asdf.
                     </p>
                     <div class="grid grid-cols-2 gap-6">
-                        <div class="flex items-center space-x-3">
-                            <div class="p-2 bg-indigo-500/10 rounded-lg text-indigo-500">
-                                <i data-lucide="check-circle" class="w-5 h-5"></i>
-                            </div>
-                            <span class="font-medium">Modern Approach</span>
+                        <div class="p-4 glass rounded-xl">
+                            <h3 class="text-3xl font-bold text-blue-400 mb-1">10+</h3>
+                            <p class="text-sm text-slate-500 uppercase tracking-tighter">Years Experience</p>
                         </div>
-                        <div class="flex items-center space-x-3">
-                            <div class="p-2 bg-indigo-500/10 rounded-lg text-indigo-500">
-                                <i data-lucide="check-circle" class="w-5 h-5"></i>
-                            </div>
-                            <span class="font-medium">Expert Team</span>
+                        <div class="p-4 glass rounded-xl">
+                            <h3 class="text-3xl font-bold text-purple-400 mb-1">500+</h3>
+                            <p class="text-sm text-slate-500 uppercase tracking-tighter">Projects Done</p>
                         </div>
                     </div>
                 </div>
@@ -126,144 +109,146 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-24 bg-white/5">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- Services -->
+    <section id="services" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-4xl font-bold mb-4">Core Services</h2>
-                <div class="w-20 h-1 bg-indigo-500 mx-auto mb-6"></div>
-                <p class="text-gray-400 max-w-xl mx-auto">Discover how our specialized asdf solutions can transform your business landscape.</p>
+                <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="reveal glass p-8 rounded-3xl hover-card transition-all duration-300">
-                    <div class="w-14 h-14 bg-indigo-500/20 rounded-2xl flex items-center justify-center text-indigo-400 mb-6">
-                        <i data-lucide="layers" class="w-8 h-8"></i>
+                <div class="service-card glass p-10 rounded-3xl transition-all duration-500 reveal">
+                    <div class="w-14 h-14 bg-blue-600/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="layers" class="text-blue-400"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Strategic asdf</h3>
-                    <p class="text-gray-400 leading-relaxed mb-6">Tailored strategies designed to align with your specific goals and market demands.</p>
-                    <a href="#" class="text-indigo-400 font-semibold flex items-center hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i></a>
+                    <h3 class="text-2xl font-bold mb-4">asdf Solution</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Comprehensive asdf services designed to scale your business and optimize performance in every aspect.
+                    </p>
                 </div>
-
                 <!-- Service 2 -->
-                <div class="reveal glass p-8 rounded-3xl hover-card transition-all duration-300" style="transition-delay: 0.1s">
-                    <div class="w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center text-purple-400 mb-6">
-                        <i data-lucide="zap" class="w-8 h-8"></i>
+                <div class="service-card glass p-10 rounded-3xl transition-all duration-500 reveal delay-100">
+                    <div class="w-14 h-14 bg-purple-600/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="zap" class="text-purple-400"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Digital Excellence</h3>
-                    <p class="text-gray-400 leading-relaxed mb-6">Leveraging the latest technology to create seamless digital experiences for your users.</p>
-                    <a href="#" class="text-purple-400 font-semibold flex items-center hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i></a>
+                    <h3 class="text-2xl font-bold mb-4">asdf Optimization</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Maximizing efficiency through advanced asdf techniques tailored for modern professional standards.
+                    </p>
                 </div>
-
                 <!-- Service 3 -->
-                <div class="reveal glass p-8 rounded-3xl hover-card transition-all duration-300" style="transition-delay: 0.2s">
-                    <div class="w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400 mb-6">
-                        <i data-lucide="shield" class="w-8 h-8"></i>
+                <div class="service-card glass p-10 rounded-3xl transition-all duration-500 reveal delay-200">
+                    <div class="w-14 h-14 bg-emerald-600/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="shield" class="text-emerald-400"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Secure asdf</h3>
-                    <p class="text-gray-400 leading-relaxed mb-6">Comprehensive security and reliability built into every solution we provide.</p>
-                    <a href="#" class="text-blue-400 font-semibold flex items-center hover:gap-2 transition-all">Learn More <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i></a>
+                    <h3 class="text-2xl font-bold mb-4">asdf Security</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Ensuring the highest level of protection and reliability for all your asdf requirements and assets.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Showcase Section -->
-    <section id="showcase" class="py-24">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+    <!-- Showcase/Gallery -->
+    <section id="showcase" class="py-24 px-6 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
                 <div>
-                    <h2 class="text-4xl font-bold mb-4">Showcase</h2>
-                    <p class="text-gray-400">A collection of our finest asdf works.</p>
+                    <h2 class="text-4xl font-bold mb-4">Our Showcase</h2>
+                    <p class="text-slate-400">A glimpse into our recent asdf projects.</p>
                 </div>
-                <div class="mt-6 md:mt-0">
-                    <button class="px-6 py-2 border border-white/20 rounded-full hover:bg-white/10 transition-all">View All Work</button>
-                </div>
+                <button class="mt-6 md:mt-0 text-blue-400 hover:text-blue-300 font-medium flex items-center gap-2">
+                    View All Projects <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="reveal group relative overflow-hidden rounded-2xl aspect-[4/5]">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" alt="Project 1">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="text-indigo-400 text-sm font-bold mb-2">Web Design</p>
-                        <h4 class="text-2xl font-bold">Project Alpha</h4>
+                <div class="group relative overflow-hidden rounded-2xl reveal">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Work 1" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                        <h4 class="text-xl font-bold">Project Alpha</h4>
+                        <p class="text-sm text-slate-300">asdf</p>
                     </div>
                 </div>
-                <div class="reveal group relative overflow-hidden rounded-2xl aspect-[4/5]" style="transition-delay: 0.1s">
-                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" alt="Project 2">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="text-indigo-400 text-sm font-bold mb-2">Branding</p>
-                        <h4 class="text-2xl font-bold">Minimal Concept</h4>
+                <div class="group relative overflow-hidden rounded-2xl reveal delay-100">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800" alt="Work 2" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                        <h4 class="text-xl font-bold">Project Beta</h4>
+                        <p class="text-sm text-slate-300">asdf</p>
                     </div>
                 </div>
-                <div class="reveal group relative overflow-hidden rounded-2xl aspect-[4/5]" style="transition-delay: 0.2s">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" alt="Project 3">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="text-indigo-400 text-sm font-bold mb-2">Development</p>
-                        <h4 class="text-2xl font-bold">Tech Stack V2</h4>
+                <div class="group relative overflow-hidden rounded-2xl reveal delay-200">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" alt="Work 3" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                        <h4 class="text-xl font-bold">Project Gamma</h4>
+                        <p class="text-sm text-slate-300">asdf</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-white/5">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- Contact Us -->
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-16">
                 <div class="reveal">
                     <h2 class="text-4xl font-bold mb-6">Get In Touch</h2>
-                    <p class="text-gray-400 mb-10">Have a project in mind or just want to say hello? Drop us a message and we'll get back to you as soon as possible.</p>
+                    <p class="text-slate-400 mb-10 text-lg">Interested in our asdf services? Drop us a message and let's start something great together.</p>
                     
                     <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="p-3 bg-indigo-500/10 rounded-xl text-indigo-500">
-                                <i data-lucide="mail" class="w-6 h-6"></i>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 glass rounded-xl flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="text-blue-400 w-5 h-5"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Email Us</h4>
-                                <p class="text-gray-400">sherinjojucoc@gmail.com</p>
+                                <p class="text-slate-500 text-sm">Email Address</p>
+                                <a href="mailto:sherinjojucoc@gmail.com" class="text-lg font-medium hover:text-blue-400">sherinjojucoc@gmail.com</a>
                             </div>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="p-3 bg-indigo-500/10 rounded-xl text-indigo-500">
-                                <i data-lucide="phone" class="w-6 h-6"></i>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 glass rounded-xl flex items-center justify-center shrink-0">
+                                <i data-lucide="phone" class="text-blue-400 w-5 h-5"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Call Us</h4>
-                                <p class="text-gray-400">7012619446</p>
+                                <p class="text-slate-500 text-sm">Phone / WhatsApp</p>
+                                <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" class="text-lg font-medium hover:text-blue-400">7012619446</a>
                             </div>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="p-3 bg-indigo-500/10 rounded-xl text-indigo-500">
-                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 glass rounded-xl flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="text-blue-400 w-5 h-5"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Location</h4>
-                                <p class="text-gray-400">asdf</p>
+                                <p class="text-slate-500 text-sm">Office Location</p>
+                                <p class="text-lg font-medium">asdf</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="reveal glass p-8 rounded-3xl">
+                <div class="glass p-8 rounded-3xl reveal delay-200">
                     <form class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-medium mb-2">Name</label>
-                                <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition-all" placeholder="John Doe">
+                                <label class="block text-sm font-medium text-slate-400 mb-2">Name</label>
+                                <input type="text" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition" placeholder="John Doe">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium mb-2">Email</label>
-                                <input type="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition-all" placeholder="john@example.com">
+                                <label class="block text-sm font-medium text-slate-400 mb-2">Email</label>
+                                <input type="email" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition" placeholder="john@example.com">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium mb-2">Message</label>
-                            <textarea rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition-all" placeholder="Tell us about your project..."></textarea>
+                            <label class="block text-sm font-medium text-slate-400 mb-2">Message</label>
+                            <textarea rows="4" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition" placeholder="Tell us about your project..."></textarea>
                         </div>
-                        <button type="submit" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-indigo-500/20">Send Message</button>
+                        <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 rounded-xl transition shadow-lg shadow-blue-500/20">
+                            Send Message
+                        </button>
                     </form>
                 </div>
             </div>
@@ -271,57 +256,52 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-white/10">
+    <footer class="py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-10">
-                <a href="#" class="text-3xl font-extrabold mb-6 md:mb-0">shi<span class="text-indigo-500">.</span></a>
-                <div class="flex space-x-6">
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-indigo-500 transition-all"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-indigo-500 transition-all"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-indigo-500 transition-all"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div>
+                    <div class="text-3xl font-bold gradient-text mb-2">shi</div>
+                    <p class="text-slate-500 text-sm">asdf &copy; 2024. All rights reserved.</p>
                 </div>
-            </div>
-            <div class="text-center text-gray-500 text-sm">
-                <p>&copy; 2023 shi. All rights reserved. Built with passion and asdf.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-blue-600 transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-blue-600 transition"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-blue-600 transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
             </div>
         </div>
     </footer>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/917012619446?text=can%20I%20know%20more%20details" class="fixed bottom-8 right-8 w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform z-50">
-        <i data-lucide="message-circle" class="w-8 h-8"></i>
-    </a>
 
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Scroll Reveal Animation
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+        // Reveal Animations on Scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
                 }
-            });
-        }, observerOptions);
+            }
+        }
 
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
+        window.addEventListener("scroll", reveal);
+        // Initial check
+        reveal();
 
-        // Smooth Navbar Background Change
-        window.addEventListener('scroll', () => {
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
                 nav.classList.add('py-3');
-                nav.style.background = 'rgba(10, 10, 10, 0.8)';
+                nav.classList.remove('py-4');
             } else {
+                nav.classList.add('py-4');
                 nav.classList.remove('py-3');
-                nav.style.background = 'rgba(255, 255, 255, 0.03)';
             }
         });
     </script>
