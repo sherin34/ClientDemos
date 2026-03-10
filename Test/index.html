@@ -1,96 +1,284 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World | Minimalist Experience</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pandozy | Premium Printed Streetwear</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#256af4",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #030712;
-        }
-        .gradient-text {
-            background: linear-gradient(to right, #818cf8, #c084fc, #fb7185);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
-        }
-        .dot-pattern {
-            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-            background-size: 30px 30px;
         }
     </style>
 </head>
-<body class="text-slate-200 min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
-    
-    <!-- Background Elements -->
-    <div class="absolute inset-0 dot-pattern opacity-40"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px]"></div>
-    
-    <!-- Main Content -->
-    <main class="relative z-10 px-6 text-center">
-        <div class="mb-8 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium tracking-wider uppercase text-indigo-400 animate-pulse">
-            <i data-lucide="sparkles" class="w-3 h-3"></i>
-            New Beginnings
-        </div>
-        
-        <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-6">
-            <span class="gradient-text">Hello World.</span>
-        </h1>
-        
-        <p class="text-slate-400 text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-10">
-            A simple message to mark the start of something extraordinary. 
-            Crafted with precision, designed for the future.
-        </p>
-        
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#" class="glass-card px-8 py-3 rounded-xl font-semibold transition-all hover:bg-white/10 flex items-center gap-2 group">
-                Explore Work
-                <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
-            </a>
-            <a href="#" class="px-8 py-3 rounded-xl font-semibold text-slate-400 hover:text-white transition-colors">
-                Documentation
-            </a>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="absolute bottom-10 left-0 w-full px-10 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
-        <div class="flex items-center gap-4">
-            <a href="#" class="hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
-            <a href="#" class="hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-            <a href="#" class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-        </div>
-        <div class="flex items-center gap-1">
-            Built with <i data-lucide="heart" class="w-3 h-3 text-rose-500 fill-rose-500"></i> by Design Studio
-        </div>
-    </footer>
-
-    <!-- Decorative Icon -->
-    <div class="absolute top-20 right-20 animate-float opacity-20 hidden lg:block">
-        <i data-lucide="globe" class="w-24 h-24 text-white"></i>
-    </div>
-
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-    </script>
-</body>
-</html>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+<div class="flex items-center gap-10">
+<a class="flex items-center gap-2 group" href="#">
+<img alt="Pandozy Logo" class="h-8 w-auto" data-alt="Pandozy minimalist geometric brand logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOFiSyBRSwH-XmGQHBOm63Wn07RRheS4LsDx98etSwNW2XAgxxLdKYUyccTPmbEId8LXmGlUTYmhFHEm8OqNkxHUL37h8VX3ZvZD4hbuXGdl9TCBE4k6hfDSoVs1JuqMBRqmhLZZG2D3m-_OIPNnAfMllGOwTMwTwVjtdJnA3Qa95vnJwim3GLYdhvX1kRaPaw-49xhU90haP8hD0IrXUOxCQHAPq0L8Wt0lb8XHnvXJm34MEMxDcIQePW51zDRlBof2wFgjTRbnIh"/>
+<span class="text-xl font-black tracking-tighter text-slate-900 dark:text-white uppercase">Pandozy</span>
+</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Collections</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Artisans</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Journal</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center bg-slate-100 dark:bg-slate-800 rounded-full px-4 py-1.5 border border-transparent focus-within:border-primary transition-all">
+<span class="material-symbols-outlined text-slate-400 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs w-48 placeholder:text-slate-500" placeholder="Search collection..." type="text"/>
+</div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="md:hidden p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<section class="relative h-[85vh] w-full overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="High-fashion model wearing artistic printed hoodie in urban brutalist setting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7S0hF5FfFSg7CKv6USfJVjXlIcEETap9fM0fZ6KecvPi7XHLeAULaVfS4ChCCz0vomAkalH5flA8CFGIqrXynd2hvaetqx7BgfKemuVu73wdxITZkfJNIqb7zUHrk9JR-qMlPyzicmvELABeUmzZ9Pcuyn3T0cG8Ho5hVJxR6c25nSDN1nvAa77jSCK18eijXQ7VT0fdytV_CcbRANA4K-3RuFyeffHeRXNLcGC9lgAlxS4Pj81sV2e3sI6OXON3rsbZelXZeF2GI');">
+<div class="absolute inset-0 bg-gradient-to-r from-background-dark/80 via-background-dark/40 to-transparent"></div>
+</div>
+<div class="relative h-full mx-auto max-w-7xl px-6 flex flex-col justify-center items-start">
+<span class="mb-4 inline-block rounded-full bg-primary/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary">New Season Drop</span>
+<h1 class="max-w-2xl text-5xl font-black leading-[1.1] tracking-tight text-white md:text-7xl">
+                        Elevate Your <br/><span class="text-primary">Streetwear</span>
+</h1>
+<p class="mt-6 max-w-lg text-lg text-slate-300">
+                        Wear Your Art. Premium artistic hoodies crafted for the modern minimalist who demands both quality and expression.
+                    </p>
+<div class="mt-10 flex flex-wrap gap-4">
+<button class="rounded-lg bg-primary px-8 py-4 text-sm font-bold text-white shadow-xl shadow-primary/20 hover:bg-primary/90 transition-all">
+                            Shop the Collection
+                        </button>
+<button class="rounded-lg border border-white/20 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm hover:bg-white/10 transition-all">
+                            View Lookbook
+                        </button>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-light dark:bg-background-dark">
+<div class="mx-auto max-w-7xl px-6">
+<div class="flex items-end justify-between mb-12">
+<div>
+<h2 class="text-3xl font-black tracking-tight dark:text-white">Featured Collection</h2>
+<p class="mt-2 text-slate-500 dark:text-slate-400">Curated pieces from our latest artistic collaboration.</p>
+</div>
+<a class="hidden md:flex items-center gap-2 text-sm font-bold text-primary group" href="#">
+                            Explore All <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800">
+<img alt="Ethereal Drift Hoodie" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Ethereal Drift Hoodie with abstract blue and white cloud print" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH1De63RS9Ac4nYMSWS0qL7hVPZbSfzySojjfFl25fQpkay8edGHlhc8fKrewsgwTU2HBK2hptxgYZeQ-D6s0fSmmpdqXss7poYKbKYFZqzyBgAgXRLk4i19zd_98ht1b59A7Bb9Ap-mrFFUlZjhGBEJ7qPg4UXaDO51mIVh-J7pppWtcnRdy6uZ_YoUEYiNsMxF0cV_LQGJsf_f2YHsNRbQnXZG53fsePQJsfQF1yrdmBlarE1LpSeJka5DSC-9WUJvcvjpqTKUTN"/>
+<button class="absolute bottom-4 right-4 translate-y-12 rounded-full bg-white p-3 text-slate-900 opacity-0 shadow-lg transition-all group-hover:translate-y-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+<div class="mt-4 flex justify-between">
+<div>
+<h3 class="text-sm font-bold dark:text-white">Ethereal Drift Hoodie</h3>
+<p class="text-xs text-slate-500 mt-1 uppercase tracking-widest">Organic Cotton</p>
+</div>
+<p class="text-sm font-bold text-primary">$85.00</p>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800">
+<img alt="Abstract Noir Hoodie" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Minimalist black hoodie with white abstract line art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0JAkBmDLn78ZsMCjjDeUBfksDVqhiUJo9a0bk-Cpy-vrgpjOwS-xghF-H_iLhKzlXfq47Xcw3wwVR_hH0LcGK7CBnfcuc1hpP_Rwwav6LhR_4cKn9sCtrUEkaXpeSb6ukILW5NuCgKIKv6XrXJXnFdhARItTeE8k4b3PhoVWKy719MfAPsUkv8FKa_kbITO1Z4oaa42c7Ws0gdV7oDDvzDlJoq0DLh1BDoJknbwEhNRUkuXO9KMB2utmHI5Zbfvaxog3_UZfozZpW"/>
+<div class="absolute top-4 left-4 rounded-full bg-primary px-3 py-1 text-[10px] font-bold text-white uppercase">Limited</div>
+<button class="absolute bottom-4 right-4 translate-y-12 rounded-full bg-white p-3 text-slate-900 opacity-0 shadow-lg transition-all group-hover:translate-y-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+<div class="mt-4 flex justify-between">
+<div>
+<h3 class="text-sm font-bold dark:text-white">Abstract Noir Hoodie</h3>
+<p class="text-xs text-slate-500 mt-1 uppercase tracking-widest">Screen Printed</p>
+</div>
+<p class="text-sm font-bold text-primary">$95.00</p>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800">
+<img alt="Cyber City Hoodie" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Neon-themed hoodie with futuristic cityscape graphics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIBn4AN-GIpRVQZPZAWp4PxJOA6KRd2hNaclSXoxo4HujO67StuNcTVRQFP1Nz_ystYY5czoHtnLRrnrVkHNR-eu5lzatCB5GDDw_fExjH--QyJv1iJP4ykFMeqhZKTMk1bSlt3LiYYmAXbHhvd8KHFZLh0zZfnPnOgneGmDaqD5flYNjnecrOaVPbRTpcM9PwOp9pZISsAz8j18oEMULo-z_LBC4x6aL1Itjh89ioOsIXs1wXgs6cPQL5PzzGmxioy_l2v69BGSBH"/>
+<button class="absolute bottom-4 right-4 translate-y-12 rounded-full bg-white p-3 text-slate-900 opacity-0 shadow-lg transition-all group-hover:translate-y-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+<div class="mt-4 flex justify-between">
+<div>
+<h3 class="text-sm font-bold dark:text-white">Cyber City Hoodie</h3>
+<p class="text-xs text-slate-500 mt-1 uppercase tracking-widest">Heavyweight</p>
+</div>
+<p class="text-sm font-bold text-primary">$89.00</p>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800">
+<img alt="Void Minimalist Hoodie" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Clean minimal dark grey hoodie with subtle embroidered logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk0QXt72LcTZrUUn6yXLdRWsZUOZ4XFW4cNNEXGP5Z8N9RDbm04rdt4Rvohtj7E0TckRf9iVCZ8D1kIA2AK7AGK5_vvxWDr4e3HAUbnEikVSGOPWBxhS0JzMkSTqwQPTf64mouCnKpmZhz22iPjTeEIPl3t926AWNABw23pvwzLnpuEGlg-ht4tUe7PuvzOn3_nGymN05p9oxuZB57AT7VP2gfKPxJG5hsSTMEDDcDtSDyPxgOtOMIlyZ_qAXfbfRZYajUdHkepZUc"/>
+<button class="absolute bottom-4 right-4 translate-y-12 rounded-full bg-white p-3 text-slate-900 opacity-0 shadow-lg transition-all group-hover:translate-y-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+<div class="mt-4 flex justify-between">
+<div>
+<h3 class="text-sm font-bold dark:text-white">Void Minimalist</h3>
+<p class="text-xs text-slate-500 mt-1 uppercase tracking-widest">Premium Core</p>
+</div>
+<p class="text-sm font-bold text-primary">$79.00</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-slate-100 dark:bg-slate-900/50">
+<div class="mx-auto max-w-7xl px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1">
+<h2 class="text-4xl font-black dark:text-white leading-tight">Quality &amp; Craftsmanship</h2>
+<p class="mt-6 text-lg text-slate-500 dark:text-slate-400">
+                                Every Pandozy hoodie is more than just apparel; it's a masterpiece of comfort, durability, and sustainable design. We don't believe in fast fashion, we believe in lasting impressions.
+                            </p>
+<div class="mt-10 space-y-8">
+<div class="flex gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">eco</span>
+</div>
+<div>
+<h3 class="text-lg font-bold dark:text-white">450GSM Organic Cotton</h3>
+<p class="mt-1 text-slate-500 dark:text-slate-400 text-sm">Our signature heavyweight premium fabric provides a luxurious, structured fit that keeps its shape for years.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">ink_highlighter</span>
+</div>
+<div>
+<h3 class="text-lg font-bold dark:text-white">Water-Based Eco-Inks</h3>
+<p class="mt-1 text-slate-500 dark:text-slate-400 text-sm">Breathable, soft-hand prints that won't crack or peel. Better for your skin, better for the planet.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div>
+<h3 class="text-lg font-bold dark:text-white">Sustainable Production</h3>
+<p class="mt-1 text-slate-500 dark:text-slate-400 text-sm">Ethically sourced materials and carbon-neutral shipping on every single order globally.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<div class="relative aspect-square">
+<div class="absolute -inset-4 bg-primary/20 rounded-2xl blur-3xl"></div>
+<img alt="Detailed fabric shot" class="relative h-full w-full rounded-2xl object-cover shadow-2xl" data-alt="Macro photography of high-quality cotton fabric and precision stitching" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz3dF1pqm8iMqQ1ujTDy0yTRelRzPsAHSfUG-31PVDtNzha5v-3QUSecu-1IebsJE-p1DYRZP2KLtkYbTC7bXGNqRgjc5eH_VHKv3DE9_wbk2Hkyt3TWTI8gnUnYFPltRZKB9Y1ZmwfDcJcqUhj80FQBzf7LYPQ8Aq-sPRa1SnvyERLI2_Lf3MmST-fhIYP89TBKXFx05XdNRZ8pV09kmWIRnZNubK1ll6yw9vZ7t_J1_ULFX56uA7sqcu6lLFJKYwlmp6vK_yITpN"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24">
+<div class="mx-auto max-w-4xl px-6 text-center">
+<h2 class="text-4xl font-black dark:text-white">Join the Collective</h2>
+<p class="mt-4 text-slate-500 dark:text-slate-400">Get early access to drops, artist interviews, and exclusive discounts.</p>
+<form class="mt-10 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+<input class="flex-1 rounded-lg border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-4 focus:border-primary focus:ring-primary dark:text-white" placeholder="Your email address" type="email"/>
+<button class="rounded-lg bg-primary px-8 py-4 font-bold text-white transition-all hover:bg-primary/90" type="submit">
+                            Subscribe
+                        </button>
+</form>
+<p class="mt-4 text-xs text-slate-400">By subscribing, you agree to our Privacy Policy.</p>
+</div>
+</section>
+</main>
+<footer class="bg-slate-100 dark:bg-slate-950 pt-20 pb-10">
+<div class="mx-auto max-w-7xl px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-slate-200 dark:border-slate-800 pb-16">
+<div>
+<a class="flex items-center gap-2 mb-6" href="#">
+<img alt="Pandozy Logo" class="h-8 w-auto" data-alt="Pandozy minimalist geometric brand logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIpidLw01GCqYbHsQ4abULsrYNBOUIUx67D5-ooRQJv5Q0zEBGlr9x9zuIrws8KAbNPFTwO9BwvFQwXI31QwqqmzvlPmNxRpRyeUPd3_I2FW5XD4G0ZFqnmtEE6fh0Zi0gjz1cEE5lHqWPC3wrPnJo5Xm7u02A1PcVLZQZtr240t5Cf5EWLAr1PurZ9D4U8CT2R_HwkS814f85YA15cCzk619c50x03eF8qATxdpb_imSXZaMxjvaaaDF0sxFYm3TcqMbPUch_VHih"/>
+<span class="text-xl font-black tracking-tighter dark:text-white uppercase">Pandozy</span>
+</a>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                            Crafting premium streetwear that serves as a canvas for contemporary artists. High-quality essentials for those who move between digital and physical worlds.
+                        </p>
+</div>
+<div>
+<h4 class="font-bold mb-6 dark:text-white">Shop</h4>
+<ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">All Hoodies</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Graphic Tees</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Limited Drops</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Accessories</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 dark:text-white">Company</h4>
+<ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Our Story</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Sustainability</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Journal</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Wholesale</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 dark:text-white">Support</h4>
+<ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Size Guide</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between mt-10 gap-6">
+<p class="text-xs text-slate-500 dark:text-slate-400">© 2024 Pandozy Collective. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-xl">camera</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-xl">play_circle</span></a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-400">payments</span>
+<span class="material-symbols-outlined text-slate-400">credit_card</span>
+<span class="material-symbols-outlined text-slate-400">shield_with_heart</span>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
